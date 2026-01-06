@@ -25,6 +25,7 @@ class Patient(models.Model):
         ('Female', 'Female'),
         ('Others', 'Others')
     ]
+    appointment = models.ForeignKey('Appointment', on_delete=models.CASCADE, null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     fullname = models.CharField(max_length=100)
     email = models.EmailField()
@@ -47,14 +48,13 @@ class Appointment(models.Model):
         ('completed', 'completed'),
         ('cancelled', 'cancelled')
     ]
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, null=True, blank=True)
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, null=True, blank=True)
     appointment_date = models.DateField()
     appointment_time = models.TimeField()
     status = models.CharField(max_length=30, choices=STATUS_CHOICES, default='pending' )
 
     def __str__(self):
-        return self.patient.fullname
+        return self.doctor.name
 
 
 class Payment(models.Model):
