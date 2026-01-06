@@ -10,16 +10,19 @@
             <p class="text-md font-normal tracking-wide text-gray-600 mt-4">Experience world-class medical care with our
                 team of dedicated specialists and patient-centered ap/our-doctorsproach. Your health is our priority.
             </p>
-            <div class="flex flex-1 mt-5">
-                <a href="" class="inline-flex items-center bg-[#1BC7C7] px-4 py-3 text-white text-xl rounded gap-2">Book
-                    Appointment <span><svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M19 12H5m14 0-4 4m4-4-4-4" />
-                        </svg>
-                    </span></a>
+            <div class="flex mt-5">
+                <a href="" class="inline-flex items-center gap-2 bg-[#1BC7C7] text-white px-4 py-3 text-lg leading-none
+              rounded transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                    Book Appointment
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 12H5m14 0-4 4m4-4-4-4" />
+                    </svg>
+                </a>
             </div>
-            <div class="flex flex-1 mt-8 mb-16">
+
+            <div class="flex flex-1 mb-16">
                 <div class="flex flex-1 gap-2 items-center">
                     <p class=" text-center bg-sky-50 p-2 rounded-full"><svg
                             class="w-8 h-8 text-[#1BC7C7] dark:text-white" aria-hidden="true"
@@ -50,7 +53,7 @@
             </div>
         </div>
         <div class="w-1/2 p-4 mt-8">
-            <img src="{% static 'doctor.webp' %}" alt="logo">
+            <img src="{% static 'doctor.webp' %}" alt="logo" class="rounded-lg">
         </div>
     </div>
 
@@ -110,7 +113,8 @@
         </div>
     </div>
     <div class="flex flex-1 justify-center mt-5">
-        <a href="" class="bg-[#1BC7C7] text-white px-6 text-lg py-4 items-center gap-2  mb-10 rounded-full flex">Explore All
+        <a href="" class="bg-[#1BC7C7] text-white px-6 text-lg py-4 items-center gap-2  mb-10 rounded-full flex">Explore
+            All
             Services <span><svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -121,31 +125,37 @@
 
 </div>
 <div class="w-full">
-    <div class="flex flex-col mt-10 justify-center">
-        <div class="flex flex-col text-center">
+    <div class="flex flex-col mt-10 ">
+        <div class="flex flex-col justify-center text-center">
 
-            <h1 class="text-3xl font-semibold tracking-wide" >Meet Our <span class="text-[#1BC7C7]">Healthcare Professionals</span></h1>
-            <p class="text-gray-600 font-medium mt-4">Our team of experienced doctors and specialists are committed to providing exceptional care</p>
+            <h1 class="text-3xl font-semibold tracking-wide">Meet Our <span class="text-[#1BC7C7]">Healthcare
+                    Professionals</span></h1>
+            <p class="text-gray-600 font-medium mt-4">Our team of experienced doctors and specialists are committed to
+                providing exceptional care</p>
         </div>
-         <div class="p-6 justify-center mt-10 ">
-        <div class="grid grid-cols-3 gap-6  ">
-            <div
-                class="flex flex-col items-center bg-white justify-center border gap-3 px-4 py-6 rounded-lg hover:shadow-lg">
-                <p class="bg-sky-100 hover:bg-sky-200 p-5 rounded-lg"><svg xmlns="http://www.w3.org/2000/svg"
-                        class="h-10 w-10 text-[#1BC7C7]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
-                        </path>
-                    </svg></p>
-                <h1 class="text-3xl font-semibold hover:text-[#1BC7C7]">Gynecology</h1>
-                <p class="text-center">Comprehensive women's healthcare including pregnancy care, fertility treatments,
-                    and gynecological
-                    surgeries.</p>
+        <div class="p-6  mt-10 ">
+            <div class="grid grid-cols-4 gap-6  ">
+
+                {% for doctor in doctors %}
+                <div
+                    class="flex flex-col  bg-white  border  pb-4 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105">
+                    <img src="{{doctor.image.url}}" alt="" class="w-full h-48 rounded-t-lg">
+                    <h1 class="text-xl font-semibold hover:text-[#1BC7C7] px-4 mt-2">{{doctor.name}}</h1>
+                    <p class="text-[#1BC7C7] px-4 mt-1">{{doctor.qualification}}</p>
+                    <p class="text-[#1BC7C7] px-4 mt-1">{{doctor.department}}</p>
+                    <a href="" class="px-4 mt-2">
+                        <p class="inline-flex  bg-[#1BC7C7] items-center justify-center w-full py-2 rounded-lg hover:bg-[#276969] text-white gap-2">
+                            <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 10h16M8 14h8m-4-7V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z"/>
+</svg>
+<span> Book Appointment</span></p>
+                    </a>
+                </div>
+                {% endfor %}
+
+
             </div>
-            
-
         </div>
-    </div>
     </div>
 </div>
 
