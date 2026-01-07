@@ -10,6 +10,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     #user penal
     path('', home, name='homepage'),
+    path('appointment/',appointmentdate, name="appointmentdate"),
     # doctor penal
     path('department/',department, name="departmentform" ),
     path('doctorform/',doctor, name="doctorform" ),
