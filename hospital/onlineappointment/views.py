@@ -21,13 +21,15 @@ def appointmentdate(request, doctor_id):
         date = request.POST.get('appointment_date')
         time = request.POST.get('appointment_time')
 
-        Appointment.objects.create(doctor=doctor, appointment_date = date, appointment_time= time, status = 'pending')
-        return redirect('patientaddress')
-        
+        appointment = Appointment.objects.create(doctor=doctor, appointment_date = date, appointment_time= time, status = 'pending')
+        return redirect('patientdetail', appointment_id=appointment.id)
     return render(request, 'user/appointmentdate.html')
 
-def patientdetails(request):
+def patientdetails(request, appointment_id):
     form = PatientForm(request.POST or None)
     if form.is_valid():
-        form.save()
+        patient = form.save(commit=False)
+
+        patient.appointment = Appointment.objects.get(id=appointment_id)
+        patient.save()
     return render(request, 'user/patientaddress.html',{'form':form})

@@ -12,7 +12,7 @@ urlpatterns = [
     path('', home, name='homepage'),
     path('doctorslist/',doctorslist, name="doctorlist"),
     path('appointmentdate/<int:doctor_id>/',appointmentdate, name="appointmentdate"),
-    path('patientaddress/', patientdetails, name='patientaddress'),
+    path('patientaddress/<int:appointment_id>/', patientdetails, name='patientdetail'),
     # doctor penal
     path('department/',department, name="departmentform" ),
     path('doctorform/',doctor, name="doctorform" ),
