@@ -35,7 +35,7 @@
         <div class="flex flex-1 gap-2 p-4">
             <a href="" class="bg-[#1BC7C7] py-1 px-2 rounded-lg items-center text-white">all department</a>
             {% for department in departments %}
-            <a href="{% url 'appointmentdate' %}" class="bg-gray-100 hover:bg-gray-200 py-1 px-2 rounded-lg items-center">{{department.title}}</a>
+            <a href="{% url 'doctorlist' %}" class="bg-gray-100 hover:bg-gray-200 py-1 px-2 rounded-lg items-center">{{department.title}}</a>
 
             {% endfor %}
         </div>

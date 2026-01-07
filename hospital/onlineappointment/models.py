@@ -54,7 +54,7 @@ class Appointment(models.Model):
     status = models.CharField(max_length=30, choices=STATUS_CHOICES, default='pending' )
 
     def __str__(self):
-        return self.doctor.name
+        return f"{self.doctor.name}- {self.appointment_date}"
 
 
 class Payment(models.Model):

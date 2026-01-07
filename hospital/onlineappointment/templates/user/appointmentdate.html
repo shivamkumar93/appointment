@@ -1,0 +1,71 @@
+{% extends 'user/header.html' %}
+
+{% block content %}
+<div class="w-full bg-gray-100 mt-20">
+    <div class="flex flex-1 px-[15%] ">
+        <div class="flex flex-1 bg-white border mt-6">
+            <!-- <div class="flex flex-col py-5   ">
+                <div class="flex flex-col px-5">
+
+                    <p class="text-xl font-medium">Select Date</p>
+                    <button type="button" class="justify-start">
+                        <p class="text-[#1BC7C7] font-medium">Tomorrow</p>
+                        <span>09 jan</span>
+                    </button>
+                </div>
+                <hr>
+                <div class="flex flex-col">
+                    <div class="flex flex-col px-5">
+                        <h2>Morning</h2>
+                        <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-3">
+                            <button type="button" class=" py-2 px-4 bg-sky-100 text-[#1BC7C7]">10 AM</button>
+                            <button type="button" class=" py-2 px-4 bg-sky-100 text-[#1BC7C7]">10:30 AM</button>
+                            <button type="button" class=" py-2 px-4 bg-sky-100 text-[#1BC7C7]">11 AM</button>
+                            <button type="button" class=" py-2 px-4 bg-sky-100 text-[#1BC7C7]">11:30 AM</button>
+                            
+                        </div>
+                    </div>
+                    <div class="flex flex-1">
+                        <h3>After noon</h3>
+                    </div>
+                    <div class="flex flex-1">
+                        <h2>Evning</h2>
+                    </div>
+                </div>
+            </div> -->
+            <form action="" method="post" class="w-full">
+                {% csrf_token %}
+                <h2 class="text-xl font-bold justify-center text-center">Book Appointment</h2>
+                <div class="flex flex-col mt-2 px-5">
+                    <label for="">Select Date</label>
+                    <input type="date" name="appointment_date" id="appointment_date" required
+                        class="w-full py-2 px-4 rounded-lg border">
+                </div>
+                <div class="flex flex-col px-4 mt-3">
+                    <h2>Morning Slots</h2>
+                    <hr>
+                    <div class="grid grid-cols-5 px-5 gap-3">
+                        <label for=""> 10:00 AM
+                            <input type="radio" value="10:00:00" name="appointment_time" id="appointment_time" class="peer "
+                                required>
+                        </label>
+                        <label for=""> 10:30 AM
+                            <input type="radio" value="10:30:00" name="appointment_time" id="appointment_time" class="peer "
+                                required>
+                        </label>
+                        <label for=""> 11:00 AM
+                            <input type="radio" value="11:00:00" name="appointment_time" id="appointment_time" class="peer "
+                                required>
+                        </label>
+                        <label for=""> 11:30 AM
+                            <input type="radio" value="11:30:00" name="appointment_time" id="appointment_time" class="peer "
+                                required>
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 px-4 text-white py-2 mt-2">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
