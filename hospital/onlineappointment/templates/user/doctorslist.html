@@ -54,17 +54,8 @@
                 <h1 class="text-xl font-medium  px-4 mt-2">{{doctor.name}}</h1>
                 <!-- <p class="text-[#1BC7C7] px-4 mt-1">{{doctor.qualification}}</p> -->
                 <p class="text-[#1BC7C7] px-4 mt-1">{{doctor.department}}</p>
-                <!-- <div class="flex flex-1 justify-center items-center mt-1 gap-2 px-4" >
-                    <p class="text-white bg-sky-400  px-3 py-1 border text-sm  rounded-full">S</p>
-                    <p class="text-white bg-sky-400  px-3 py-1 border text-sm  rounded-full">M</p>
-                    <p class="text-white bg-sky-400  px-3 py-1 border text-sm  rounded-full">T</p>
-                    <p class="text-white bg-sky-400  px-3 py-1 border text-sm  rounded-full">W</p>
-                    <p class="text-white bg-sky-400  px-3 py-1 border text-sm  rounded-full">T</p>
-                    <p class="text-white bg-sky-400  px-3 py-1 border text-sm  rounded-full">F</p>
-                    <p class="text-white bg-sky-400  px-3 py-1 border text-sm  rounded-full">S</p>
-                    
-                </div> -->
-                <a href="" class="px-4 mt-2">
+                
+                <a href="{% url 'appointmentdate' doctor.id %}" class="px-4 mt-2">
                     <p
                         class="inline-flex  bg-[#1BC7C7] items-center justify-center w-full py-2 rounded-lg hover:bg-[#276969] text-white gap-2">
                         

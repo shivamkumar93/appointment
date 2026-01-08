@@ -134,12 +134,12 @@
                 providing exceptional care</p>
         </div>
         <div class="p-6  mt-10 ">
-            <div class="grid grid-cols-4 gap-6  ">
+            <div class="grid grid-cols-4 gap-10  ">
 
                 {% for doctor in doctors %}
                 <div
                     class="flex flex-col  bg-white  border  pb-4 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105">
-                    <img src="{{doctor.image.url}}" alt="" class="w-full h-48 rounded-t-lg">
+                    <img src="{{doctor.image.url}}" alt="" class="w-full h-56 rounded-t-lg">
                     <h1 class="text-xl font-semibold hover:text-[#1BC7C7] px-4 mt-2">{{doctor.name}}</h1>
                     <p class="text-[#1BC7C7] px-4 mt-1">{{doctor.qualification}}</p>
                     <p class="text-[#1BC7C7] px-4 mt-1">{{doctor.department}}</p>

@@ -29,7 +29,7 @@ def appointmentdate(request, doctor_id):
 
         appointment = Appointment.objects.create(doctor=doctor, appointment_date = date, appointment_time= time, status = 'pending')
         return redirect('patientdetail', appointment_id=appointment.id)
-    return render(request, 'user/appointmentdate.html')
+    return render(request, 'user/appointmentdate.html', {'doctor':doctor})
 
 def patientdetails(request, appointment_id):
     form = PatientForm(request.POST or None)
