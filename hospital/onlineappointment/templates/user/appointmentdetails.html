@@ -1,0 +1,143 @@
+{% extends 'user/header.html' %}
+
+{% block content %}
+
+<div class="w-full bg-gray-50 mt-20 py-5">
+    <div class="flex flex-col px-[12%]">
+        <div class="flex flex-1 bg-gradient-to-r from-[#1BC7C7] to-[#276969] border rounded-lg mt-8">
+            <div class="flex flex-1 justify-between items-center px-6 py-8">
+                <div class="flex flex-col gap-2">
+                    <h3 class="text-white text-xl font-semibold ">Book Your Appointment</h3>
+                    <p class="text-gray-300 text-sm">Schedule your visit with our specialists</p>
+                </div>
+                <div class="">
+                    <a href="" class="flex items-center gap-2  ">
+                        <svg class="w-4 h-4 text-white dark:text-white " aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 10h16M8 14h8m-4-7V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z" />
+                        </svg>
+                        <span class="text-sm text-white hover:text-[#1BC7C7]">Already have an Appointment? Check
+                            existing
+                            appointment</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-1 bg-sky-200 border rounded-t-lg mt-4">
+            <div class="flex flex-col p-6">
+                <p class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 mr-2 text-[#1BC7C7]"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
+                        </path>
+                    </svg><span class="text-md font-medium">Review Your Appointment Details</span> </p>
+                <p class="text-gray-600 mt-2">Please verify all details before confirming your appointment.</p>
+            </div>
+
+        </div>
+        <div class="flex flex-1 bg-white rounded-b-lg border py-2 px-6">
+            <div class="flex flex-col w-full mb-10 ">
+                <h2 class="text-xl font-semibold mt-1">Appointment Details</h2>
+                <hr class="py-1 mt-1">
+                <div class="w-full flex-1 flex px-3 ">
+                    <div class="w-1/2 py-3">
+                        <div class="flex flex-1 gap-4 ">
+                            <img src="{{doctor.image.url}}" alt="" class="size-20 border rounded-lg border-[#1BC7C7]">
+                            <div class="flex flex-col">
+                                <p class="text-gray-500">doctor </p>
+                                <p class="font-medium">{{doctor.name}}</p>
+                                <p class="text-[#1BC7C7]"> {{doctor.department.title}}</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col mt-3 gap-2 px-2">
+                            <div class="flex flex-l items-center gap-3">
+                                <p class="bg-sky-200 rounded-full p-1"><svg class="w-6 h-6 text-[#1BC7C7] dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2" d="M4 10h16M8 14h8m-4-7V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z" /></svg>
+                                </p>
+                                <div class="flex flex-col">
+                                    <p class="text-gray-500">Date</p>
+                                    <p class="font-medium">{{appointment.appointment_date}}</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-l items-center gap-3">
+                                <p class="bg-sky-200 rounded-full p-1"><svg class="w-6 h-6 text-[#1BC7C7] dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+                                </p>
+                                <div class="flex flex-col">
+                                    <p class="text-gray-500">Time</p>
+                                    <p class="font-medium">{{appointment.appointment_time}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-1/2  p-6">
+                        <div class="flex flex-col border border-gray-200 rounded-lg py-3 bg-gray-50">
+                            <div class="flex flex-1 justify-between px-3">
+                                <p class="text-gray-600 font-medium">Consulation Fee</p>
+                                <p class="text-gray-800 font-bold">{{doctor.consultation_fees}}/-</p>
+                            </div>
+                            <div class="flex flex-1 justify-between px-3">
+                                <p class="text-gray-600 font-normal">Payment Method</p>
+                                <p class="text-gray-600 font-medium">Online</p>
+                            </div>
+                            <hr class="mt-2">
+                            <div class="flex flex-1 justify-between px-3 mt-2">
+                                <p class="text-lg font-bold text-gray-800">Total</p>
+                                <p class="text-[#1BC7C7] font-bold">{{doctor.consultation_fees}}/-</p>
+                            </div>
+                            <div class="flex flex-1 px-3">
+                                <p>To be Paid at The Hospital</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <h2 class="text-xl font-semibold mt-1">Patient Details</h2>
+                    <hr class="mt-1">
+                    <div class="w-full flex gap-10 ">
+                        
+                        {% if patient %}   
+                        <div class="w-1/2">
+                            <div class="flex flex-col">
+                                <p class="text-gray-500 font-medium">Full Name</p>
+                                <span class="text-md font-medium px-2 text-gray-800">{{patient.fullname}}</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <p class="text-gray-500 font-medium">Phone Number</p>
+                                <span class="text-md font-medium px-2 text-gray-800">{{patient.phone_number}}</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <p class="text-gray-500 font-medium">Address</p>
+                                <span class=" font-normal px-2 text-gray-800">{{patient.address}}</span>
+                            </div>
+                        </div>
+                        <div class="w-1/2 ">
+                            <div class="flex flex-col">
+                                <p class="text-md font-medium text-gray-600">Email</p>
+                                <span class="px-2 font-medium text-gray-800">{{patient.email}}</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <p class="text-md font-medium text-gray-600">Gender</p>
+                                <span class="px-2 font-medium text-gray-800">{{patient.gender}}</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <p class="text-md font-medium text-gray-600">City</p>
+                                <span class="px-2  text-gray-800">{{patient.city}}</span>
+                            </div>
+                        </div>
+                         {% endif %}
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-1 justify-end mt-3">
+            <a href="" class="text-white bg-blue-600 hover:bg-blue-700 py-2 px-6 rounded">Payment</a>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

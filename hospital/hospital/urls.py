@@ -13,6 +13,7 @@ urlpatterns = [
     path('doctorslist/',doctorslist, name="doctorlist"),
     path('appointmentdate/<int:doctor_id>/',appointmentdate, name="appointmentdate"),
     path('patientaddress/<int:appointment_id>/', patientdetails, name='patientdetail'),
+    path('appointmentdetails/<int:id>/', appointmentdetails, name="appointmentdetails" ),
     # doctor penal
     path('department/',department, name="departmentform" ),
     path('doctorform/',doctor, name="doctorform" ),

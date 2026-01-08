@@ -30,6 +30,14 @@ def patientdetails(request, appointment_id):
     if form.is_valid():
         patient = form.save(commit=False)
 
-        patient.appointment = Appointment.objects.get(id=appointment_id)
+        patient.appointment = get_object_or_404(Appointment, id=appointment_id)
         patient.save()
+        return redirect('appointmentdetails', id=patient.appointment.id)
     return render(request, 'user/patientaddress.html',{'form':form})
+
+def appointmentdetails(request, id):
+    appointment = get_object_or_404(Appointment, id=id)
+    doctor = appointment.doctor
+    patient = Patient.objects.filter(appointment=appointment).first()
+
+    return render(request, 'user/appointmentdetails.html', {'appointment': appointment, 'doctor': doctor, 'patient': patient})
