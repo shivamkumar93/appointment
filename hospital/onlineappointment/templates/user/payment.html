@@ -1,0 +1,42 @@
+{% extends 'user/header.html' %}
+
+{% block content %}
+ <h2 class="mt-20"></h2>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<button id="rzp-button">Pay Now</button>
+
+<script>
+var options = {
+    "key": "{{ razorpay_key }}",
+    "amount": "{{ amount }}",
+    "currency": "{{ currency }}",
+    "name": "Hospital Appointment",
+    "order_id": "{{ payment.razorpay_order_id }}",
+
+    "handler": function (response){
+        fetch("/payment_verify/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": "{{ csrf_token }}"
+            },
+            body: JSON.stringify(response)
+        })
+        .then(res => res.json())
+        .then(data => {
+            alert(data.message);
+            window.location.href = "/success/";
+        })
+    }
+};
+
+var rzp = new Razorpay(options);
+document.getElementById("rzp-button").onclick = function(e){
+    rzp.open();
+    e.preventDefault();
+}
+</script>
+
+ 
+{% endblock content %}
