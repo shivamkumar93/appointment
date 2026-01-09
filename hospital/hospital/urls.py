@@ -19,6 +19,7 @@ urlpatterns = [
     # doctor penal
     path('department/',department, name="departmentform" ),
     path('doctorform/',doctor, name="doctorform" ),
+    path('successpage/', success, name="successpage"),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

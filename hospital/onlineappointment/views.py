@@ -27,6 +27,10 @@ def appointmentdate(request, doctor_id):
         date = request.POST.get('appointment_date')
         time = request.POST.get('appointment_time')
 
+        exists = Appointment.objects.filter(doctor=doctor,appointment_date = date, appointment_time = time, status = 'confirmed').exists()
+        if exists:
+            return render(request, 'user/appointmentdate.html', {"error":"Already booked"})
+
         appointment = Appointment.objects.create(doctor=doctor, appointment_date = date, appointment_time= time, status = 'pending')
         return redirect('patientdetail', appointment_id=appointment.id)
     return render(request, 'user/appointmentdate.html', {'doctor':doctor})
@@ -84,9 +88,12 @@ def payment_verify(request):
 
         payment.appointment.status = 'confirmed'
         payment.appointment.save()
-        return JsonResponse({"message":"appointment approved and payment success"})
+        return redirect(success)
     
     except:
         payment.status = 'failed'
         payment.save()
         return JsonResponse({"message":"payment failed"})
+    
+def success(request):
+    return render(request, 'user/success.html')
