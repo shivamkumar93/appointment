@@ -18,8 +18,9 @@ urlpatterns = [
     path('payment_verify/', payment_verify, name="paymentVerify"),
     # doctor penal
     path('department/',department, name="departmentform" ),
-    path('doctorform/',doctor, name="doctorform" ),
+    path('doctorform/',createdoctor, name="doctorform" ),
     path('successpage/', success, name="successpage"),
+    path('doctorappointmentlist/', doctorappointmentlist, name="doctorappointmentlist"),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

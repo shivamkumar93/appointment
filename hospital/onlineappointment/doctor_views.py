@@ -12,12 +12,15 @@ def department(request):
 
     return render(request, 'doctor/departmentform.html', {'form':form})
 
-def doctor(request):
+def createdoctor(request):
     if request.method == 'POST':
         form = DoctorForm(request.POST or None, request.FILES or None)
         if form.is_valid():
             form.save()
-            return redirect(doctor)
+            return redirect(createdoctor)
     else:
         form = DoctorForm()
     return render(request, 'doctor/doctorform.html', {'form':form})
+
+def doctorappointmentlist(request):
+    return render(request, 'doctorappointmentlist.html')

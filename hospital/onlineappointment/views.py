@@ -6,7 +6,8 @@ import razorpay
 from django.conf import settings
 import json 
 from django.http import JsonResponse
-
+from django.contrib.auth.models import User
+from django.contrib.auth import login
 client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
 
 
@@ -38,10 +39,17 @@ def appointmentdate(request, doctor_id):
 def patientdetails(request, appointment_id):
     form = PatientForm(request.POST or None)
     if form.is_valid():
+        username = form.cleaned_data['phone_number']
+        user = User.objects.filter(username=username)
+        if not user:
+            user = User.objects.create_user(username=username)
+
+
         patient = form.save(commit=False)
 
         patient.appointment = get_object_or_404(Appointment, id=appointment_id)
         patient.save()
+        login(request, user)
         return redirect('appointmentdetails', id=patient.appointment.id)
     return render(request, 'user/patientaddress.html',{'form':form})
 
