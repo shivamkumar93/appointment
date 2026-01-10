@@ -1,26 +1,22 @@
 from django.shortcuts import render, redirect
 from .forms import *
+from django.contrib.auth import login, authenticate
 
-def department(request):
+
+def loginDoctor(request):
     if request.method == 'POST':
-        form = DepartmentForm(request.POST or None)
-        if form.is_valid():
-            form.save()
-            return redirect(department)
-    else:
-        form = DepartmentForm()
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
-    return render(request, 'doctor/departmentform.html', {'form':form})
-
-def createdoctor(request):
-    if request.method == 'POST':
-        form = DoctorForm(request.POST or None, request.FILES or None)
-        if form.is_valid():
-            form.save()
-            return redirect(createdoctor)
-    else:
-        form = DoctorForm()
-    return render(request, 'doctor/doctorform.html', {'form':form})
+        user = authenticate(username=username, password=password)
+        print(user)
+        if user is not None:
+            login(request, user)
+            return redirect('doctorappointmentlist')
+    
+    return render(request, 'doctor/login.html')
 
 def doctorappointmentlist(request):
-    return render(request, 'doctorappointmentlist.html')
+    doctor = Doctor.objects.get(user = request.user)
+    appointment = Appointment.objects.filter(doctor=doctor)
+    return render(request, 'doctor/doctorappointmentlist.html', {'doctor':doctor, 'appointment':appointment})

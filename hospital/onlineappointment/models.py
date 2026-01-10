@@ -9,6 +9,7 @@ class Department(models.Model):
         return self.title
     
 class Doctor(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     department = models.ForeignKey(Department, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=100)
     image = models.ImageField(upload_to="media/")
@@ -25,8 +26,9 @@ class Patient(models.Model):
         ('Female', 'Female'),
         ('Others', 'Others')
     ]
-    appointment = models.ForeignKey('Appointment', on_delete=models.CASCADE, null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    appointment = models.ForeignKey('Appointment', on_delete=models.CASCADE, null=True, blank=True)
+
     fullname = models.CharField(max_length=100)
     email = models.EmailField()
     phone_number = models.CharField(max_length=15)

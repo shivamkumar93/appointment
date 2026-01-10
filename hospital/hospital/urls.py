@@ -5,6 +5,7 @@ from onlineappointment.views import *
 from onlineappointment.doctor_views import *
 from django.conf import settings
 from django.conf.urls.static import static
+from onlineappointment.admin_views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -21,6 +22,7 @@ urlpatterns = [
     path('doctorform/',createdoctor, name="doctorform" ),
     path('successpage/', success, name="successpage"),
     path('doctorappointmentlist/', doctorappointmentlist, name="doctorappointmentlist"),
+    path('logindoctor/', loginDoctor, name='logindoctor')
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

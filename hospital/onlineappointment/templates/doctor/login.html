@@ -1,0 +1,20 @@
+{% extends 'doctor/doctorheader.html' %}
+
+{% block content %}
+
+<div class="flex flex-1 mt-20 bg-gray-100">
+    <div class="w-full">
+        <form action="" method="post">
+            {% csrf_token %}
+            <label for="">Username</label>
+            <input type="text" name="username" id="username">
+            <label for="">Password</label>
+            <input type="password" name="password" id="password">
+            <input type="submit" value="submit" class="text-white bg-blue-600 py-1 px-3 ">
+        </form>
+
+    </div>
+
+</div>
+  
+{% endblock content %}

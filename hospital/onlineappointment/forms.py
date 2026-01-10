@@ -8,9 +8,11 @@ class DepartmentForm(forms.ModelForm):
         fields = "__all__"
 
 class DoctorForm(forms.ModelForm):
+    username = forms.CharField(max_length=150)
+    password = forms.CharField(widget=forms.PasswordInput)
     class Meta:
         model = Doctor
-        fields = "__all__"
+        fields = ['name','department','image','qualification','consultation_fees','available']
 
 class PatientForm(forms.ModelForm):
     class Meta:
