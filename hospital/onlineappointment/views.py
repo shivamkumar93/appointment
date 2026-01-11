@@ -44,13 +44,13 @@ def patientdetails(request, appointment_id):
         if not user:
             user = User.objects.create_user(username=username)
 
-
         patient = form.save(commit=False)
-
-        patient.appointment = get_object_or_404(Appointment, id=appointment_id)
         patient.save()
+        appointment = get_object_or_404(Appointment, id=appointment_id)
+        appointment.patient = patient
+        appointment.save()
         login(request, user)
-        return redirect('appointmentdetails', id=patient.appointment.id)
+        return redirect('appointmentdetails', id=appointment.id)
     return render(request, 'user/patientaddress.html',{'form':form})
 
 def appointmentdetails(request, id):

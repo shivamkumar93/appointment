@@ -9,7 +9,7 @@ def loginDoctor(request):
         password = request.POST.get('password')
 
         user = authenticate(username=username, password=password)
-        print(user)
+        
         if user is not None:
             login(request, user)
             return redirect('doctorappointmentlist')
@@ -18,5 +18,5 @@ def loginDoctor(request):
 
 def doctorappointmentlist(request):
     doctor = Doctor.objects.get(user = request.user)
-    appointment = Appointment.objects.filter(doctor=doctor)
-    return render(request, 'doctor/doctorappointmentlist.html', {'doctor':doctor, 'appointment':appointment})
+    appointments = Appointment.objects.filter(doctor=doctor).order_by('-appointment_date', '-appointment_time')
+    return render(request, 'doctor/doctorappointmentlist.html', {'doctor':doctor, 'appointments':appointments})

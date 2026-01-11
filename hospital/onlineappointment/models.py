@@ -27,8 +27,6 @@ class Patient(models.Model):
         ('Others', 'Others')
     ]
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    appointment = models.ForeignKey('Appointment', on_delete=models.CASCADE, null=True, blank=True)
-
     fullname = models.CharField(max_length=100)
     email = models.EmailField()
     phone_number = models.CharField(max_length=15)
@@ -51,6 +49,7 @@ class Appointment(models.Model):
         ('cancelled', 'cancelled')
     ]
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, null=True, blank=True)
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, null=True, blank=True)
     appointment_date = models.DateField()
     appointment_time = models.TimeField()
     status = models.CharField(max_length=30, choices=STATUS_CHOICES, default='pending' )

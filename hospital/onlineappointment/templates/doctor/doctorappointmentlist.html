@@ -2,9 +2,124 @@
 
 {% block content %}
 
-<div class="flex flex-1 mt-20">
-    <h2>{{doctor.name}}</h2>
-    
+<div class="flex flex-col mt-20">
+
+    <div class="flex flex-col">
+
+        <div class="w-full flex border bg-sky-100 p-5 rounded">
+            <div class="w-4/12 ">
+                <div class="flex flex-col justify-center items-center">
+                    <img src="{{doctor.image.url}}" alt="" class="size-24  border p-1 rounded-full border-[#1BC7C7]">
+                    <p class="text-lg font-semibold mt-3">{{doctor.name}}</p>
+                    <p class="text-[#1BC7C7] font-medium">{{doctor.department}}</p>
+                </div>
+
+            </div>
+
+            <div class="w-8/12 flex ">
+
+                <div class="w-1/2">
+                    <h2>Doctor Informations</h2>
+                    <div class="flex flex-col gap-4 mt-2">
+                        <div class="flex flex-1 gap-2 items-center">
+                            <p class="p-1 border rounded-full bg-sky-200"><svg
+                                    class="w-6 h-6 text-[#1BC7C7] dark:text-white" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                    viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M12 6.03v13m0-13c-2.819-.831-4.715-1.076-8.029-1.023A.99.99 0 0 0 3 6v11c0 .563.466 1.014 1.03 1.007 3.122-.043 5.018.212 7.97 1.023m0-13c2.819-.831 4.715-1.076 8.029-1.023A.99.99 0 0 1 21 6v11c0 .563-.466 1.014-1.03 1.007-3.122-.043-5.018.212-7.97 1.023" />
+                                </svg></p>
+                            <div class="flex flex-col">
+                                <p class="text-gray-600 text-sm">Qualification</p>
+                                <p class="text-gray-800 font-medium px-1">{{doctor.qualification}}</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-1 gap-2 items-center">
+                            <p class="p-1 border rounded-full bg-sky-200"><svg
+                                    class="w-6 h-6 text-[#1BC7C7] dark:text-white" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                    viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 5h6m-6 4h6M10 3v4h4V3h-4Z" />
+                                </svg></p>
+                            <div class="flex flex-col">
+                                <p class="text-gray-600 text-sm">Department</p>
+                                <p class="text-gray-800 font-medium px-1">{{doctor.department}} </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-1/2 mt-4">
+                    <div class="flex flex-col gap-4">
+                        <div class="flex flex-1 gap-2 items-center">
+                            <p class="p-1 text-[#1BC7C7] border rounded-full bg-sky-200"><svg
+                                    class="w-6 h-6 text-[#1BC7C7] dark:text-white" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                    viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M8 17.345a4.76 4.76 0 0 0 2.558 1.618c2.274.589 4.512-.446 4.999-2.31.487-1.866-1.273-3.9-3.546-4.49-2.273-.59-4.034-2.623-3.547-4.488.486-1.865 2.724-2.899 4.998-2.31.982.236 1.87.793 2.538 1.592m-3.879 12.171V21m0-18v2.2" />
+                                </svg>
+                            </p>
+                            <div class="flex flex-col">
+                                <p class="text-gray-600">Consultation fee</p>
+                                <p class="text-gray-800 text-lg font-medium px-1"> ₹{{doctor.consultation_fees}} /-</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-1 gap-2 items-center">
+                            <p class="p-1 border rounded-full bg-sky-200"><svg
+                                    class="w-6 h-6 text-[#1BC7C7] dark:text-white" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                    viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z" />
+                                </svg></p>
+                            <div class="flex flex-col">
+                                <p class="text-gray-600">Available Day</p>
+                                <p class="text-sm text-gray-800 font-medium">Sunday, Monday, Tuesday, Wednesday,
+                                    Thursday, Friday, Saturday</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="flex flex-1 px-10 py-5 ">
+        <table class="w-full ">
+            <tr>
+                <th class="border border-1 py-1">Id</th>
+                <th class="border border-1 py-1">Patient</th>
+                <th class="border border-1 py-1">Phone</th>
+                <th class="border border-1 py-1">Date</th>
+                <th class="border border-1 py-1">Time</th>
+                <th class="border border-1 py-1">Status</th>
+            </tr>
+            {% for appointment in appointments %}
+            
+            <tr>
+                <td class="border border-1 py-1 text-center">{{ appointment.patient.id }}</td>
+                <td class="border border-1 py-1 text-center">{{ appointment.patient.fullname }}</td>
+                <td class="border border-1 py-1 text-center">{{ appointment.patient.phone_number }}</td>
+                <td class="border border-1 py-1 text-center">{{ appointment.appointment_date }}</td>
+                <td class="border border-1 py-1 text-center">{{ appointment.appointment_time }}</td>
+                <td class="border border-1 py-1 text-center">{{ appointment.status }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">No Appointments</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+
+
 </div>
-  
+
 {% endblock content %}
