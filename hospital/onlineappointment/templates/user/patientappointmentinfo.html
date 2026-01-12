@@ -1,9 +1,50 @@
 {% extends 'user/header.html' %}
 
 {% block content %}
-<div class="flex flex-1 mt-20">
+<div class="flex flex-1 h-screen mt-20 bg-gray-50 ">
 
-    <h2>patient appointment detail</h2>
-    {{request.user.username}}
+    <div class="flex flex-col w-full px-[12%] py-5 ">
+        <h1 class=" text-center text-[#1BC7C7] items-center justify-center flex text-2xl font-bold">Appointment Details
+        </h1>
+        <div class="flex flex-col bg-white border rounded-lg py-5 px-10  mt-5">
+            
+            {% for appointment in appointments %}
+          
+                
+            <div class="flex flex-col gap-3">
+
+                <div class="flex flex-col gap-3">
+                    <h2 class="text-xl font-semibold text-gray-500">Doctor Details</h2>
+                    <div class="flex flex-1 px-3 justify-between">
+                        <p class="text-lg font-normal text-gray-800">{{appointment.doctor.name}}</p>
+                        <p class="text-lg font-normal text-gray-800">{{appointment.doctor.department.title}}</p>
+                        <p>{{appointment.doctor.consultation_fees}}/-</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="flex flex-col gap-3">
+                    <h2 class="text-xl font-semibold text-gray-500">Appointment details</h2>
+                    <div class="flex flex-1 px-3 justify-between ">
+                        <p>Date : <span class="text-gray-500">{{appointment.appointment_date}}</span></p>
+                        <p>Time : <span class="text-gray-500">{{appointment.appointment_time}}</span></p>
+                        <p>Status : <span class="text-gray-500">{{appointment.status}}</span></p>
+                    </div>
+                </div>
+                <hr>
+                <div class="flex flex-col gap-3">
+                    <h2 class="text-xl font-semibold text-gray-500">patient details</h2>
+                    <div class="flex flex-1 px-3 justify-between">
+                        <p>Name: <span class="text-gray-600">{{appointment.patient.fullname}}</span> </p>
+                        <p>Phone: <span class="text-gray-600">{{appointment.patient.phone_number}}</span> </p>
+                        <p>Address: <span class="text-gray-600">{{appointment.patient.address}}-{{appointment.patient.city}}-{{appointment.patient.state}}-({{appointment.patient.pincode}})</span></p>
+                        
+                    </div>
+                </div>
+            </div>
+                  
+            {% endfor %}
+
+        </div>
+    </div>
 </div>
 {% endblock content %}

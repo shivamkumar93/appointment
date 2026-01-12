@@ -44,13 +44,15 @@ def patientdetails(request, appointment_id):
         user = User.objects.filter(username=username)
         if not user:
             user = User.objects.create_user(username=username)
+        user.backend = 'django.contrib.auth.backends.ModelBackend'
+        login(request, user)
 
         patient = form.save(commit=False)
+        patient.user = user
         patient.save()
         appointment = get_object_or_404(Appointment, id=appointment_id)
         appointment.patient = patient
         appointment.save()
-        login(request, user)
         return redirect('appointmentdetails', id=appointment.id)
     return render(request, 'user/patientaddress.html',{'form':form})
 
@@ -116,4 +118,6 @@ def loginpatient(request):
     return render(request, 'user/patientlogin.html')
 
 def patientinfo(request):
-    return render(request, 'user/patientappointmentinfo.html')
+    appointments = Appointment.objects.filter(patient__user=request.user)
+
+    return render(request, 'user/patientappointmentinfo.html',{'appointments':appointments})
