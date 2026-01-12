@@ -7,7 +7,7 @@ from django.conf import settings
 import json 
 from django.http import JsonResponse
 from django.contrib.auth.models import User
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate
 client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
 
 
@@ -30,7 +30,8 @@ def appointmentdate(request, doctor_id):
 
         exists = Appointment.objects.filter(doctor=doctor,appointment_date = date, appointment_time = time, status = 'confirmed').exists()
         if exists:
-            return render(request, 'user/appointmentdate.html', {"error":"Already booked"})
+            return render(request, 'user/appointmentdate.html', {
+                'doctor': doctor, 'error': "This slot is already booked. Please choose another time."})
 
         appointment = Appointment.objects.create(doctor=doctor, appointment_date = date, appointment_time= time, status = 'pending')
         return redirect('patientdetail', appointment_id=appointment.id)
@@ -105,3 +106,14 @@ def payment_verify(request):
     
 def success(request):
     return render(request, 'user/success.html')
+
+def loginpatient(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        user = authenticate(username=username)
+        login(request, user)
+        return redirect('patientAppointmentinfo')
+    return render(request, 'user/patientlogin.html')
+
+def patientinfo(request):
+    return render(request, 'user/patientappointmentinfo.html')
