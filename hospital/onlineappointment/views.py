@@ -112,7 +112,10 @@ def success(request):
 def loginpatient(request):
     if request.method == 'POST':
         username = request.POST.get('username')
-        user = authenticate(username=username)
+        user,_ = User.objects.get_or_create(username=username)
+        if not user:
+           print(user)
+           return render(request, 'user/patientlogin.html')
         login(request, user)
         return redirect('patientAppointmentinfo')
     return render(request, 'user/patientlogin.html')

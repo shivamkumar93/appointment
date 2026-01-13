@@ -18,5 +18,6 @@ def loginDoctor(request):
 
 def doctorappointmentlist(request):
     doctor = Doctor.objects.get(user = request.user)
-    appointments = Appointment.objects.filter(doctor=doctor).order_by('-appointment_date', '-appointment_time')
+    appointments = Appointment.objects.filter(doctor=doctor).order_by('appointment_date', 'appointment_time')
     return render(request, 'doctor/doctorappointmentlist.html', {'doctor':doctor, 'appointments':appointments})
+
