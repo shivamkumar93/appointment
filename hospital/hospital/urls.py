@@ -20,11 +20,17 @@ urlpatterns = [
     path('patientlogin/', loginpatient, name='patientlogin'),
     path('patientappointmentinfo/', patientinfo, name='patientAppointmentinfo'),
     # doctor penal
-    path('department/',department, name="departmentform" ),
-    path('doctorform/',createdoctor, name="doctorform" ),
+    
     path('successpage/', success, name="successpage"),
     path('doctorappointmentlist/', doctorappointmentlist, name="doctorappointmentlist"),
-    path('logindoctor/', loginDoctor, name='logindoctor')
+    path('logindoctor/', loginDoctor, name='logindoctor'),
+
+    # admin penal
+    path('dashboard/', dashboard, name='dashboard'),
+    path('department/',department, name="departmentform" ),
+    path('doctorform/',createdoctor, name="doctorform" ),
+    path('totaldoctor/', totalDoctor, name="totaldoctorlist"),
+    path('totalpatient/', totalPatient, name="totalpatientlist"),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

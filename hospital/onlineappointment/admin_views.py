@@ -4,6 +4,9 @@ from django.contrib.auth.models import User
 
 from .forms import *
 
+def dashboard(request):
+    return render(request, 'admin/dashboard.html')
+
 def department(request):
     if request.method == 'POST':
         form = DepartmentForm(request.POST or None)
@@ -30,3 +33,11 @@ def createdoctor(request):
     else:
         form = DoctorForm()
     return render(request, 'admin/doctorform.html', {'form':form})
+
+def totalDoctor(request):
+    doctors = Doctor.objects.all()
+    return render(request, 'admin/totaldoctor.html', {'doctors':doctors})
+
+def totalPatient(request):
+    patients = Patient.objects.all()
+    return render(request, 'admin/totalpatient.html', {'patients':patients})

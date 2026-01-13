@@ -8,19 +8,19 @@
     {% load static %}
 </head>
 <body>
-    <div class="flex w-full px-[3%] bg-gray-100 fixed top-0 left-0 z-50 py-4 shadow-sm">
-        <div class="flex flex-1 items-center gap-2 ">
+    <div class="flex w-full px-[3%] bg-gray-100 fixed top-0 left-0 z-50 justify-between py-4 shadow-sm">
+        <div class="flex flex-1 items-center gap-2">
             <img src="{% static 'healingTouchLogo.jpeg' %}" alt="" class="w-12 h-12 rounded">
             <a href="" class="text-gray-800 "> 
                 <h2 class=" text-xl font-semibold text-[#1BC7C7]">Healing <span class="text-gray-800 hover:text-[#1BC7C7]">Touch</span></h2>
                 <p class="text-gray-500">Hospital(purnea)</p>
             </a>
         </div>
-        <div class="flex flex-1 items-center justify-center ">
-            <h1 class="text-xl font-bold text-[#1BC7C7]">Doctor Panel</h1>
+        <div class="flex flex-1 items-center">
+            <h2>Admin Panel</h2>
         </div>
         <div class="flex flex-1 justify-end">
-            <a href="" class="text-xl font-normal items-center text-center rounded py-2 px-3">{{request.user.username}}</a>
+            <a href="" class="text-xl font-normal items-center bg-[#276969] text-white text-center rounded py-2 px-3">Book Appointment</a>
         </div>
 
     </div>
