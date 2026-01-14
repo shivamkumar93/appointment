@@ -44,3 +44,7 @@ def totalDoctor(request):
 def totalPatient(request):
     patients = Patient.objects.all()
     return render(request, 'admin/totalpatient.html', {'patients':patients})
+
+def totalAppointment(request):
+    appointments = Appointment.objects.filter(status='confirmed').order_by('appointment_date','appointment_time')
+    return render(request, 'admin/totalAppointment.html', {'appointments':appointments})
