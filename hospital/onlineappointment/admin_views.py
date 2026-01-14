@@ -7,8 +7,13 @@ from .forms import *
 
 def dashboard(request):
     today = date.today()
-    appointments = Appointment.objects.filter(appointment_date=today)
-    return render(request, 'admin/dashboard.html', {'appointments':appointments})
+    data = {}
+    data['total'] = Appointment.objects.filter(status='confirmed').count()
+    data['patient'] = Patient.objects.all().count()
+    data['doctor'] = Doctor.objects.all().count()
+    data['today'] = Appointment.objects.filter(appointment_date=today).count()
+    data['appointments'] = Appointment.objects.filter(appointment_date=today)
+    return render(request, 'admin/dashboard.html', data)
 
 def department(request):
     if request.method == 'POST':

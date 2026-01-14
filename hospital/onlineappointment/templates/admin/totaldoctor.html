@@ -2,30 +2,32 @@
 
 {% block content %}
 
-<div class="bg-white rounded-lg shadow-md overflow-x-auto mt-6">
-        <h2 class="text-xl font-semibold text-[#064E3B] text-center py-4 border-b">Today Appointments</h2>
+<div class="bg-white rounded-lg shadow-md overflow-x-auto ">
+  <div class="flex flex-1 justify-between px-10">
+
+    <h2 class="text-xl font-semibold text-[#064E3B] py-4 border-b">Total Doctors</h2>
+    <a href="{% url 'doctorform' %}" class="text-xl font-semibold text-gray-800 underline hover:text-[#064E3B] py-4 border-b">Create Doctor</a>
+  </div>
 
         <table class="min-w-full border-collapse text-sm">
           <thead class="bg-[#064E3B] text-white">
             <tr>
-              <th class="px-4 py-3 text-left">Date</th>
-              <th class="px-4 py-3 text-left">Time</th>
-              <th class="px-4 py-3 text-left">Phone</th>
-              <th class="px-4 py-3 text-left">Patient</th>
-              <th class="px-4 py-3 text-left">Doctor</th>
-              <th class="px-4 py-3 text-left">Status</th>
+              <th class="px-4 py-3 text-left">Image</th>
+              <th class="px-4 py-3 text-left">Name</th>
+              <th class="px-4 py-3 text-left">Department</th>
+              <th class="px-4 py-3 text-left">Qualification</th>
+              <th class="px-4 py-3 text-left">Fees</th>
             </tr>
           </thead>
 
           <tbody class="bg-white divide-y">
-            {% for appointment in appointments %}
+            {% for doctor in doctors %}
             <tr class="hover:bg-gray-50 transition">
-              <td class="px-4 py-2">{{appointment.appointment_date}}</td>
-              <td class="px-4 py-2">{{appointment.appointment_time}}</td>
-              <td class="px-4 py-2">{{appointment.patient.phone_number}}</td>
-              <td class="px-4 py-2 font-medium">{{appointment.patient.fullname}}</td>
-              <td class="px-4 py-2">{{appointment.doctor.name}}</td>
-              <td class="px-4 py-2">{{appointment.status}}</td>
+              <td class="px-4 py-2 font-medium "><img src="{{doctor.image.url}}" alt="" class="w-12 h-12"></td>
+              <td class="px-4 py-2 font-semibold">Dr.{{doctor.name}}</td>
+              <td class="px-4 py-2">{{doctor.department}}</td>
+              <td class="px-4 py-2 ">{{doctor.qualification}}</td>
+              <td class="px-4 py-2">{{doctor.consultation_fees}}</td>
             </tr>
             {% empty %}
             <tr>
