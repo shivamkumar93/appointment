@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import *
 from django.contrib.auth import login, authenticate
+from django.utils.dateparse import parse_date
 
 
 def loginDoctor(request):
@@ -19,5 +20,11 @@ def loginDoctor(request):
 def doctorappointmentlist(request):
     doctor = Doctor.objects.get(user = request.user)
     appointments = Appointment.objects.filter(doctor=doctor).order_by('appointment_date', 'appointment_time')
+
+    date = request.GET.get('date')
+
+    if date:
+        appointments = appointments.filter(appointment_date=parse_date(date))
+
     return render(request, 'doctor/doctorappointmentlist.html', {'doctor':doctor, 'appointments':appointments})
 
