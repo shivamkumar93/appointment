@@ -1,11 +1,11 @@
 
-{% extends 'doctor/doctorheader.html' %}
+{% extends 'admin/adminheader.html' %}
 {% block content %}
-<div class="flex flex-col mt-24 items-center px-[10%]">
+<div class="flex flex-col  items-center px-[10%]">
 
 <h2 class="text-xl font-semibold text-gray-800 mt-2">Doctors Create here</h2>
 <hr>
-  <div class="flex flex-1">
+  <div class="flex flex-1 w-full">
         {% load tailwind_filters %}
         <form action="" method="post" enctype="multipart/form-data" class="w-full flex flex-col">
             {% csrf_token %}

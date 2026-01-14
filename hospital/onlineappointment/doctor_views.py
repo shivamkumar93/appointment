@@ -24,7 +24,7 @@ def doctorappointmentlist(request):
     date = request.GET.get('date')
 
     if date:
-        appointments = appointments.filter(appointment_date=parse_date(date))
+        appointments = appointments.filter(appointment_date=parse_date(date)).order_by('appointment_time')
 
     return render(request, 'doctor/doctorappointmentlist.html', {'doctor':doctor, 'appointments':appointments})
 

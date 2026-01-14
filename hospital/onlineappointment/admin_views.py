@@ -1,11 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from django.contrib.auth.models import User
+from datetime import date
 
 from .forms import *
 
 def dashboard(request):
-    return render(request, 'admin/dashboard.html')
+    today = date.today()
+    appointments = Appointment.objects.filter(appointment_date=today)
+    return render(request, 'admin/dashboard.html', {'appointments':appointments})
 
 def department(request):
     if request.method == 'POST':
