@@ -99,37 +99,71 @@
         </form>
     </div>
 
-    <div class="flex flex-1 px-10 py-5 ">
-        <table class="w-full ">
-            <tr>
-                <th class="border border-1 py-1">Id</th>
-                <th class="border border-1 py-1">Patient</th>
-                <th class="border border-1 py-1">Phone</th>
-                <th class="border border-1 py-1">Date</th>
-                <th class="border border-1 py-1">Time</th>
-                <th class="border border-1 py-1">Status</th>
-                <th class="border border-1 py-1">Edit</th>
-            </tr>
-            {% for appointment in appointments %}
-            
-            <tr>
-                <td class="border border-1 py-1 text-center">{{ appointment.patient.id }}</td>
-                <td class="border border-1 py-1 text-center">{{ appointment.patient.fullname }}</td>
-                <td class="border border-1 py-1 text-center">{{ appointment.patient.phone_number }}</td>
-                <td class="border border-1 py-1 text-center">{{ appointment.appointment_date }}</td>
-                <td class="border border-1 py-1 text-center">{{ appointment.appointment_time }}</td>
-                <td class="border border-1 py-1 text-center text-green-600 font-medium">{{ appointment.status }}</td>
-                <td class="border border-1 py-1 text-center">
-                    <a href="{% url 'doctoreditappointment' appointment.id %}" class="text-blue-600">Edit</a>
-                </td>
-            </tr>
-            {% empty %}
-            <tr>
-                <td colspan="5">No Appointments</td>
-            </tr>
-            {% endfor %}
+    <div class="px-10 py-6">
+    <div class="bg-white shadow-lg rounded-xl overflow-hidden">
+
+        <table class="w-full border-collapse">
+            <thead class="bg-slate-100 text-slate-700">
+                <tr>
+                    <th class="px-4 py-3 text-sm font-semibold text-left">Patient ID</th>
+                    <th class="px-4 py-3 text-sm font-semibold text-left">Patient Name</th>
+                    <th class="px-4 py-3 text-sm font-semibold text-left">Phone</th>
+                    <th class="px-4 py-3 text-sm font-semibold text-left">Date</th>
+                    <th class="px-4 py-3 text-sm font-semibold text-left">Time</th>
+                    <th class="px-4 py-3 text-sm font-semibold text-center">Status</th>
+                    <th class="px-4 py-3 text-sm font-semibold text-center">Action</th>
+                </tr>
+            </thead>
+
+            <tbody class="divide-y divide-slate-200">
+                {% for appointment in appointments %}
+                <tr class="hover:bg-slate-50 transition">
+                    <td class="px-4 py-3 text-sm text-slate-600">
+                        {{ appointment.patient.id }}
+                    </td>
+
+                    <td class="px-4 py-3 font-medium text-slate-800">
+                        {{ appointment.patient.fullname }}
+                    </td>
+
+                    <td class="px-4 py-3 text-sm text-slate-600">
+                        {{ appointment.patient.phone_number }}
+                    </td>
+
+                    <td class="px-4 py-3 text-sm text-slate-600">
+                        {{ appointment.appointment_date }}
+                    </td>
+
+                    <td class="px-4 py-3 text-sm text-slate-600">
+                        {{ appointment.appointment_time }}
+                    </td>
+
+                    <td class="px-4 py-3 text-center">
+                        <span class="px-3 py-1 rounded-full text-xs text-green-600 font-semibold">
+                            {{ appointment.status }}
+                        </span>
+                    </td>
+
+                    <td class="px-4 py-3 text-center">
+                        <a href="{% url 'doctoreditappointment' appointment.id %}"
+                           class=" items-center px-3 py-1.5 text-sm
+                                  bg-blue-600 text-white rounded-md
+                                  hover:bg-blue-700 transition">Edit</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7" class="py-6 text-center text-slate-500">
+                        No appointments found
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
         </table>
+
     </div>
+</div>
+
 
 
 

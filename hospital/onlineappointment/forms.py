@@ -18,3 +18,8 @@ class PatientForm(forms.ModelForm):
     class Meta:
         model = Patient
         exclude = ['appointment', 'user']
+
+class AppointmentForm(forms.ModelForm):
+    class Meta:
+        model = Appointment
+        fields = ['doctor','appointment_date', 'appointment_time']

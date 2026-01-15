@@ -57,8 +57,10 @@ def totalAppointment(request):
 def editAppointment(request, id):
     appointment = get_object_or_404(Appointment, id=id)
     if request.method == 'POST':
-        appointment.appointment_date = request.POST.get('appointment_date')
-        appointment.appointment_time = request.POST.get('appointment_time')
-        appointment.save()
-        return redirect('totalappointmentlist')
-    return render(request, 'admin/editappointment.html', {'appointment':appointment})
+        form = AppointmentForm(request.POST , instance=appointment)
+        if form.is_valid():
+            form.save()
+            return redirect('totalappointmentlist')
+    else:
+        form = AppointmentForm(instance=appointment)
+    return render(request, 'admin/editappointment.html', {'form':form})

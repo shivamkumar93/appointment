@@ -31,11 +31,13 @@ def doctorappointmentlist(request):
 def doctoreditappointment(request, id):
     appointment = get_object_or_404(Appointment, id=id)
     if request.method == 'POST':
-        appointment.appointment_date = request.POST.get('appointment_date')
-        appointment.appointment_time = request.POST.get('appointment_time')
-        appointment.save()
-        return redirect('doctorappointmentlist')
-    return render(request, 'doctor/doctoreditappointment.html',{'appointment':appointment})
+        form = AppointmentForm(request.POST , instance=appointment)
+        if form.is_valid():
+            form.save()
+            return redirect('doctorappointmentlist')
+    else:
+        form = AppointmentForm(instance=appointment)
+    return render(request, 'doctor/doctoreditappointment.html',{'form':form})
 
 def logoutdoctor(request):
     logout(request)
