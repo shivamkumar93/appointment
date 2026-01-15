@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from django.contrib import messages
+from django.urls import reverse
 from .forms import *
 import razorpay
 from django.conf import settings
@@ -99,7 +100,8 @@ def payment_verify(request):
 
         payment.appointment.status = 'confirmed'
         payment.appointment.save()
-        return redirect(success)
+        return JsonResponse({"message":"success", "redirect_url":reverse('patientAppointmentinfo')})
+    
     
     except:
         payment.status = 'failed'
@@ -114,7 +116,6 @@ def loginpatient(request):
         username = request.POST.get('username')
         user,_ = User.objects.get_or_create(username=username)
         if not user:
-           print(user)
            return render(request, 'user/patientlogin.html')
         login(request, user)
         return redirect('patientAppointmentinfo')
