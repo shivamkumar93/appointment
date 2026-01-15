@@ -11,10 +11,10 @@
             {% for appointment in appointments %}
           
                 
-            <div class="flex flex-col gap-3 border border-1 rounded px-3 gap-3">
+            <div class="flex flex-col p-5 gap-3">
 
                 <div class="flex flex-col gap-3">
-                    <h2 class="text-xl font-semibold text-gray-500">Doctor Details</h2>
+                    <h2 class="text-lg font-semibold text-gray-500">Doctor Details</h2>
                     <div class="flex flex-1 px-3 justify-between">
                         <p class="text-lg font-normal text-gray-800">{{appointment.doctor.name}}</p>
                         <p class="text-lg font-normal text-gray-800">{{appointment.doctor.department.title}}</p>
@@ -23,7 +23,7 @@
                 </div>
                 <hr>
                 <div class="flex flex-col gap-3">
-                    <h2 class="text-xl font-semibold text-gray-500">Appointment details</h2>
+                    <h2 class="text-lg font-semibold text-gray-500">Appointment details</h2>
                     <div class="flex flex-1 px-3 justify-between ">
                         <p>Date : <span class="text-gray-500">{{appointment.appointment_date}}</span></p>
                         <p>Time : <span class="text-gray-500">{{appointment.appointment_time}}</span></p>
@@ -32,7 +32,10 @@
                 </div>
                 <hr>
                 <div class="flex flex-col gap-3">
-                    <h2 class="text-xl font-semibold text-gray-500">patient details</h2>
+                    <div class="flex flex-1 items-center justify-between">
+                        <h2 class="text-lg font-semibold text-gray-500">patient details</h2>
+                        <a href="{% url 'editpatientdetails' appointment.patient_id %}" class="text-lg font-medium text-blue-600 underline">Edit Patient details</a>
+                    </div>
                     <div class="flex flex-1 px-3 justify-between">
                         <p>Name: <span class="text-gray-600">{{appointment.patient.fullname}}</span> </p>
                         <p>Phone: <span class="text-gray-600">{{appointment.patient.phone_number}}</span> </p>

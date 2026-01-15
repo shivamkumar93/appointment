@@ -1,0 +1,16 @@
+{% extends 'user/header.html' %}
+
+{% block content %}
+{% load tailwind_filters %}
+<div class="flex flex-1 mt-24 bg-gray-50 px-[10%]">
+
+<div class="flex flex-1 border mt-4 rounded-lg p-5 bg-white">
+    <form action="" method="post" class="w-full">
+        {% csrf_token %}
+        {{form|crispy}}
+        <button type="submit" class="text-lg text-white bg-blue-600 py-1 w-full rounded-lg">Edit Details</button>
+    </form>
+</div>
+</div>
+  
+{% endblock content %}

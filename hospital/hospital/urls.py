@@ -19,6 +19,7 @@ urlpatterns = [
     path('payment_verify/', payment_verify, name="paymentVerify"),
     path('patientlogin/', loginpatient, name='patientlogin'),
     path('patientappointmentinfo/', patientinfo, name='patientAppointmentinfo'),
+    path('editpatientdetail/<int:patient_id>/', editpatientdetails, name='editpatientdetails'),
     # doctor penal
     
     path('successpage/', success, name="successpage"),

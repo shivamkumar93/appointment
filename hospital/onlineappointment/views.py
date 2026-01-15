@@ -122,3 +122,14 @@ def loginpatient(request):
 def patientinfo(request):
     appointments = Appointment.objects.filter(patient__user=request.user)
     return render(request, 'user/patientappointmentinfo.html',{'appointments':appointments})
+
+def editpatientdetails(request, patient_id):
+    patient = get_object_or_404(Patient, id=patient_id)
+    if request.method == 'POST':
+        form = PatientForm(request.POST , instance=patient)
+        if form.is_valid():
+            form.save()
+            return redirect('patientAppointmentinfo')
+    else:
+        form = PatientForm(instance=patient)
+    return render(request, 'user/editpatientdetail.html', {'form':form})
