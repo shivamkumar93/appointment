@@ -1,0 +1,104 @@
+{% extends 'doctor/doctorheader.html' %}
+
+{% block content %}
+<div class="w-full pb-10 bg-gray-50 mt-20 px-[10%] ">
+    <div class="flex flex-col py-5 ">
+        <div class="flex flex-1 bg-white border shadow-md rounded-lg mt-6 py-5">
+
+            <form action="" method="post" class="w-full">
+                {% csrf_token %}
+                <h2 class="text-xl font-bold justify-center text-center text-gray-800">Edit Appointment By Doctor</h2>
+                <div class="flex flex-col mt-2 px-5">
+                    <label for="" class="text-gray-800 text-lg font-medium">Select Date</label>
+                    <input type="date" name="appointment_date" id="appointment_date" required
+                        class="w-full py-2 px-4 rounded-lg border">
+                </div>
+                <div class="flex flex-col px-4 mt-3">
+                    <h2 class="text-gray-800 font-medium text-lg mt-2">Morning Slots</h2>
+                    <hr class="mt-1">
+                    <div class="grid grid-cols-5 px-5 gap-3 mt-2 py-4">
+                        <label for=""> 10:00 AM
+                            <input type="radio" value="10:00:00" name="appointment_time" id="appointment_time"
+                                class="peer " required>
+                        </label>
+                        <label for=""> 10:30 AM
+                            <input type="radio" value="10:30:00" name="appointment_time" id="appointment_time"
+                                class="peer " required>
+                        </label>
+                        <label for=""> 11:00 AM
+                            <input type="radio" value="11:00:00" name="appointment_time" id="appointment_time"
+                                class="peer " required>
+                        </label>
+                        <label for=""> 11:30 AM
+                            <input type="radio" value="11:30:00" name="appointment_time" id="appointment_time"
+                                class="peer " required>
+                        </label>
+                    </div>
+                    <h2 class="text-gray-800 font-medium text-lg mt-2">Afternoon Slots</h2>
+                    <hr class="mt-1">
+                    <div class="grid grid-cols-5 px-5 gap-3 py-4">
+                        <label for=""> 12:00 PM
+                            <input type="radio" value="10:00:00" name="appointment_time" id="appointment_time"
+                                class="peer " required>
+                        </label>
+                        <label for=""> 12:30 PM
+                            <input type="radio" value="10:30:00" name="appointment_time" id="appointment_time"
+                                class="peer " required>
+                        </label>
+                        <label for=""> 1:00 PM
+                            <input type="radio" value="11:00:00" name="appointment_time" id="appointment_time"
+                                class="peer " required>
+                        </label>
+                        <label for=""> 1:30 PM
+                            <input type="radio" value="11:30:00" name="appointment_time" id="appointment_time"
+                                class="peer " required>
+                        </label>
+                        <label for=""> 2:00 PM
+                            <input type="radio" value="11:30:00" name="appointment_time" id="appointment_time"
+                                class="peer " required>
+                        </label>
+                        <label for=""> 2:30 PM
+                            <input type="radio" value="11:30:00" name="appointment_time" id="appointment_time"
+                                class="peer " required>
+                        </label>
+                        <label for=""> 3:00 PM
+                            <input type="radio" value="11:30:00" name="appointment_time" id="appointment_time"
+                                class="peer " required>
+                        </label>
+                        <label for=""> 3:30 PM
+                            <input type="radio" value="11:30:00" name="appointment_time" id="appointment_time"
+                                class="peer " required>
+                        </label>
+                    </div>
+                    <h2 class="text-gray-800 font-medium text-lg">Evening Slots</h2>
+                    <hr class="mt-1">
+                    <div class="grid grid-cols-5 px-5 gap-3 py-2">
+                        <label for=""> 4:00 PM
+                            <input type="radio" value="10:00:00" name="appointment_time" id="appointment_time"
+                                class="peer " required>
+                        </label>
+                        <label for=""> 4:30 PM
+                            <input type="radio" value="10:30:00" name="appointment_time" id="appointment_time"
+                                class="peer " required>
+                        </label>
+                        <label for=""> 5:00 PM
+                            <input type="radio" value="11:00:00" name="appointment_time" id="appointment_time"
+                                class="peer " required>
+                        </label>
+                        <label for=""> 5:30 PM
+                            <input type="radio" value="11:30:00" name="appointment_time" id="appointment_time"
+                                class="peer " required>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex flex-1 px-5">
+
+                    <button type="submit"
+                        class="w-full bg-blue-600 px-4 text-white py-2 rounded-lg mt-2">Update Appointment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+  
+{% endblock content %}

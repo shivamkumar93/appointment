@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import *
 from django.contrib.auth import login, authenticate
 from django.utils.dateparse import parse_date
@@ -28,3 +28,11 @@ def doctorappointmentlist(request):
 
     return render(request, 'doctor/doctorappointmentlist.html', {'doctor':doctor, 'appointments':appointments})
 
+def doctoreditappointment(request, id):
+    appointment = get_object_or_404(Appointment, id=id)
+    if request.method == 'POST':
+        appointment.appointment_date = request.POST.get('appointment_date')
+        appointment.appointment_time = request.POST.get('appointment_time')
+        appointment.save()
+        return redirect('doctorappointmentlist')
+    return render(request, 'doctor/doctoreditappointment.html',{'appointment':appointment})

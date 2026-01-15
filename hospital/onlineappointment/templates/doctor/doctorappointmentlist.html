@@ -108,6 +108,7 @@
                 <th class="border border-1 py-1">Date</th>
                 <th class="border border-1 py-1">Time</th>
                 <th class="border border-1 py-1">Status</th>
+                <th class="border border-1 py-1">Edit</th>
             </tr>
             {% for appointment in appointments %}
             
@@ -117,7 +118,10 @@
                 <td class="border border-1 py-1 text-center">{{ appointment.patient.phone_number }}</td>
                 <td class="border border-1 py-1 text-center">{{ appointment.appointment_date }}</td>
                 <td class="border border-1 py-1 text-center">{{ appointment.appointment_time }}</td>
-                <td class="border border-1 py-1 text-center">{{ appointment.status }}</td>
+                <td class="border border-1 py-1 text-center text-green-600 font-medium">{{ appointment.status }}</td>
+                <td class="border border-1 py-1 text-center">
+                    <a href="{% url 'doctoreditappointment' appointment.id %}" class="text-blue-600">Edit</a>
+                </td>
             </tr>
             {% empty %}
             <tr>
