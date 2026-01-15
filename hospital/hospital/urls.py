@@ -32,6 +32,7 @@ urlpatterns = [
     path('totaldoctor/', totalDoctor, name="totaldoctorlist"),
     path('totalpatient/', totalPatient, name="totalpatientlist"),
     path('totalappointment/', totalAppointment, name="totalappointmentlist"),
+    path('editappointment/', editAppointment, name="editappointment"),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

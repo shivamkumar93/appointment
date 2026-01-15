@@ -53,3 +53,10 @@ def totalPatient(request):
 def totalAppointment(request):
     appointments = Appointment.objects.filter(status='confirmed').order_by('appointment_date','appointment_time')
     return render(request, 'admin/totalAppointment.html', {'appointments':appointments})
+
+def editAppointment(request):
+    
+    if request.method == 'POST':
+        date = request.POST.get('appointment_date')
+        time = request.POST.get('appointment_time')
+    return render(request, 'admin/editappointment.html')
