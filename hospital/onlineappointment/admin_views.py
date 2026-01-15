@@ -54,9 +54,11 @@ def totalAppointment(request):
     appointments = Appointment.objects.filter(status='confirmed').order_by('appointment_date','appointment_time')
     return render(request, 'admin/totalAppointment.html', {'appointments':appointments})
 
-def editAppointment(request):
-    
+def editAppointment(request, id):
+    appointment = get_object_or_404(Appointment, id=id)
     if request.method == 'POST':
-        date = request.POST.get('appointment_date')
-        time = request.POST.get('appointment_time')
-    return render(request, 'admin/editappointment.html')
+        appointment.appointment_date = request.POST.get('appointment_date')
+        appointment.appointment_time = request.POST.get('appointment_time')
+        appointment.save()
+        return redirect('totalappointmentlist')
+    return render(request, 'admin/editappointment.html', {'appointment':appointment})

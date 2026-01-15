@@ -123,5 +123,4 @@ def loginpatient(request):
 
 def patientinfo(request):
     appointments = Appointment.objects.filter(patient__user=request.user)
-
     return render(request, 'user/patientappointmentinfo.html',{'appointments':appointments})
