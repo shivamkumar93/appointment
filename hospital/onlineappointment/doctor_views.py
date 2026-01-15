@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import *
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.utils.dateparse import parse_date
 
 
@@ -36,3 +36,7 @@ def doctoreditappointment(request, id):
         appointment.save()
         return redirect('doctorappointmentlist')
     return render(request, 'doctor/doctoreditappointment.html',{'appointment':appointment})
+
+def logoutdoctor(request):
+    logout(request)
+    return redirect('logindoctor')

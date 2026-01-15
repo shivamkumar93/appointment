@@ -1,17 +1,17 @@
-
 {% extends 'admin/adminheader.html' %}
 {% block content %}
-<div class="flex flex-col  items-center px-[10%]">
-
-<h2 class="text-xl font-semibold text-gray-800 mt-2">Doctors Create here</h2>
-<hr>
-  <div class="flex flex-1 w-full">
-        {% load tailwind_filters %}
-        <form action="" method="post" enctype="multipart/form-data" class="w-full flex flex-col">
-            {% csrf_token %}
-            {{form|crispy}}
-            <button type="submit" class="border border-1 text-white bg-blue-500 rounded w-full">Submit</button>
-        </form>
+<div class="w-full  items-center px-[10%]">
+    <div class="flex flex-col border border-1 rounded-lg bg-white shadow-md p-5">
+        <h2 class="text-xl font-semibold text-gray-800 text-center">Doctors Create here</h2>
+        <hr class="mt-1">
+        <div class="flex flex-1 w-full py-1">
+            {% load tailwind_filters %}
+            <form action="" method="post" enctype="multipart/form-data" class="w-full flex flex-col">
+                {% csrf_token %}
+                {{form|crispy}}
+                <button type="submit" class="border border-1 text-white bg-blue-500 rounded py-1 text-lg font-medium w-full">Submit</button>
+            </form>
+        </div>
     </div>
-    </div>
+</div>
 {% endblock content %}

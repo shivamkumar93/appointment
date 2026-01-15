@@ -101,8 +101,6 @@ def payment_verify(request):
         payment.appointment.status = 'confirmed'
         payment.appointment.save()
         return JsonResponse({"message":"success", "redirect_url":reverse('patientAppointmentinfo')})
-    
-    
     except:
         payment.status = 'failed'
         payment.save()

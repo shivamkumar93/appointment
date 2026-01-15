@@ -19,7 +19,8 @@
         <div class="flex flex-1 items-center justify-center ">
             <h1 class="text-xl font-bold text-[#1BC7C7]">Doctor Panel</h1>
         </div>
-        <div class="flex flex-1 justify-end">
+        <div class="flex flex-1 justify-end  items-center">
+            <a href="{% url 'logoutdoctor' %}" class=" font-medium text-red-600">Logout</a>
             <a href="" class="text-xl font-normal items-center text-center rounded py-2 px-3">{{request.user.username}}</a>
         </div>
 

@@ -24,6 +24,7 @@ urlpatterns = [
     path('successpage/', success, name="successpage"),
     path('doctorappointmentlist/', doctorappointmentlist, name="doctorappointmentlist"),
     path('logindoctor/', loginDoctor, name='logindoctor'),
+    path('logoutdoctor/', logoutdoctor, name='logoutdoctor'),
     path('doctoreditappointment/<int:id>/', doctoreditappointment, name='doctoreditappointment'),
 
     # admin penal
