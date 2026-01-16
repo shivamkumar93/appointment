@@ -28,16 +28,34 @@ def doctorappointmentlist(request):
 
     return render(request, 'doctor/doctorappointmentlist.html', {'doctor':doctor, 'appointments':appointments})
 
+from django.db import transaction
+
 def doctoreditappointment(request, id):
     appointment = get_object_or_404(Appointment, id=id)
+
     if request.method == 'POST':
-        form = AppointmentForm(request.POST , instance=appointment)
+        old_date = appointment.appointment_date
+        old_time = appointment.appointment_time
+        old_status = appointment.status
+        old_doctor = appointment.doctor
+        old_patient = appointment.patient
+
+        form = AppointmentForm(request.POST, instance=appointment)
+
         if form.is_valid():
-            form.save()
+            with transaction.atomic():
+                AppointmentHistory.objects.create(
+                    appointment=appointment,doctor=old_doctor,patient=old_patient,
+                    old_date=old_date, old_time=old_time, old_status=old_status
+                )
+                form.save()
             return redirect('doctorappointmentlist')
+
     else:
         form = AppointmentForm(instance=appointment)
-    return render(request, 'doctor/doctoreditappointment.html',{'form':form})
+
+    return render(request,'doctor/doctoreditappointment.html', {'form': form})
+
 
 def logoutdoctor(request):
     logout(request)
