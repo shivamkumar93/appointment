@@ -36,7 +36,7 @@
                         <h2 class="text-lg font-semibold text-gray-500">patient details</h2>
                         <a href="{% url 'editpatientdetails' appointment.patient_id %}" class="text-lg font-medium text-blue-600 underline">Edit Patient details</a>
                     </div>
-                    <div class="flex flex-1 px-3 justify-between">
+                    <div class="flex flex-1 px-3 justify-between gap-5">
                         <p>Name: <span class="text-gray-600">{{appointment.patient.fullname}}</span> </p>
                         <p>Phone: <span class="text-gray-600">{{appointment.patient.phone_number}}</span> </p>
                         <p>Address: <span class="text-gray-600">{{appointment.patient.address}},{{appointment.patient.city}},{{appointment.patient.state}},({{appointment.patient.pincode}})</span></p>
