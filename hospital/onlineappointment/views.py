@@ -12,16 +12,21 @@ from django.contrib.auth import login, authenticate
 client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
 
 
+
 # Create your views here.
 def home(request):
     doctors = Doctor.objects.all()
     return render(request, 'user/home.html', {'doctors':doctors})
 
 def doctorslist(request):
-    data = {}
-    data['departments'] = Department.objects.all()
-    data['doctors'] = Doctor.objects.all()
-    return render(request, 'user/doctorslist.html', data)
+    departments = Department.objects.all()
+    doctors = Doctor.objects.all()
+
+    department_id = request.GET.get('department')
+    if department_id:
+        doctors = doctors.filter(department_id=department_id)
+
+    return render(request, 'user/doctorslist.html', {'departments':departments, 'doctors':doctors})
 
 def appointmentdate(request, doctor_id):
     doctor = get_object_or_404(Doctor, id=doctor_id)
@@ -42,7 +47,7 @@ def patientdetails(request, appointment_id):
     form = PatientForm(request.POST or None)
     if form.is_valid():
         username = form.cleaned_data['phone_number']
-        user = User.objects.filter(username=username)
+        user = User.objects.get(username=username)
         if not user:
             user = User.objects.create_user(username=username)
         user.backend = 'django.contrib.auth.backends.ModelBackend'

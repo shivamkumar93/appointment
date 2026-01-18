@@ -32,37 +32,50 @@
                 <span class="text-lg font-medium">Select Department</span>
             </h2>
         </div>
-        <div class="flex flex-1 gap-2 p-4">
-            <a href="" class="bg-[#1BC7C7] py-1 px-2 rounded-lg items-center text-white">all department</a>
-            {% for department in departments %}
-            <a href="{% url 'doctorlist' %}" class="bg-gray-100 hover:bg-gray-200 py-1 px-2 rounded-lg items-center">{{department.title}}</a>
+        <form method="get">
+            <div class="flex flex-1 gap-2 p-4">
 
-            {% endfor %}
-        </div>
+                <!-- All Departments -->
+                <button type="submit" name="department" value=""
+                    class="bg-[#1BC7C7] py-1 px-2 rounded-lg items-center text-white">
+                    All Departments
+                </button>
+
+                {% for department in departments %}
+                <button type="submit" name="department" value="{{ department.id }}"
+                    class="bg-gray-100 hover:bg-gray-200 py-1 px-2 rounded-lg items-center">
+                    {{ department.title }}
+                </button>
+                {% endfor %}
+
+            </div>
+        </form>
+
     </div>
     <div class="mt-10 ">
         <div class="grid grid-cols-4 gap-6  ">
 
             {% for doctor in doctors %}
             <div
-            class="flex flex-col justify-center bg-sky-100 text-center   border  pb-4 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105">
-            <a href="">
-                <div class="flex flex-1 justify-center mt-4 ">
+                class="flex flex-col justify-center bg-sky-100 text-center   border  pb-4 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105">
+                <a href="">
+                    <div class="flex flex-1 justify-center mt-4 ">
 
-                    <img src="{{doctor.image.url}}" alt="" class="w-28 h-28 rounded-full p-1 border border-[#1BC7C7]">
-                </div>
-                <h1 class="text-xl font-medium  px-4 mt-2">{{doctor.name}}</h1>
-                <!-- <p class="text-[#1BC7C7] px-4 mt-1">{{doctor.qualification}}</p> -->
-                <p class="text-[#1BC7C7] px-4 mt-1">{{doctor.department}}</p>
-                
-                <a href="{% url 'appointmentdate' doctor.id %}" class="px-4 mt-2">
-                    <p
-                        class="inline-flex  bg-[#1BC7C7] items-center justify-center w-full py-2 rounded-lg hover:bg-[#276969] text-white gap-2">
-                        
-                        <span> Select Doctor</span>
-                    </p>
+                        <img src="{{doctor.image.url}}" alt=""
+                            class="w-28 h-28 rounded-full p-1 border border-[#1BC7C7]">
+                    </div>
+                    <h1 class="text-xl font-medium  px-4 mt-2">{{doctor.name}}</h1>
+                    <!-- <p class="text-[#1BC7C7] px-4 mt-1">{{doctor.qualification}}</p> -->
+                    <p class="text-[#1BC7C7] px-4 mt-1">{{doctor.department}}</p>
+
+                    <a href="{% url 'appointmentdate' doctor.id %}" class="px-4 mt-2">
+                        <p
+                            class="inline-flex  bg-[#1BC7C7] items-center justify-center w-full py-2 rounded-lg hover:bg-[#276969] text-white gap-2">
+
+                            <span> Select Doctor</span>
+                        </p>
+                    </a>
                 </a>
-            </a>
             </div>
             {% endfor %}
 
