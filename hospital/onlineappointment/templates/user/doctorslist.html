@@ -9,7 +9,7 @@
                 <p class="text-gray-300 text-sm">Schedule your visit with our specialists</p>
             </div>
             <div class="">
-                <a href="" class="flex items-center gap-2  ">
+                <a href="{% url 'patientlogin' %}" class="flex items-center gap-2  ">
                     <svg class="w-4 h-4 text-white dark:text-white " aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -35,7 +35,6 @@
         <form method="get">
             <div class="flex flex-1 gap-2 p-4">
 
-                <!-- All Departments -->
                 <button type="submit" name="department" value=""
                     class="bg-[#1BC7C7] py-1 px-2 rounded-lg items-center text-white">
                     All Departments
