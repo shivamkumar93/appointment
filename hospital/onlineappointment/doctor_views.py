@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import *
 from django.contrib.auth import login, authenticate, logout
 from django.utils.dateparse import parse_date
+from django.contrib import messages
 
 
 def loginDoctor(request):
@@ -60,3 +61,18 @@ def doctoreditappointment(request, id):
 def logoutdoctor(request):
     logout(request)
     return redirect('logindoctor')
+
+def cancleAndrefund(request, id):
+    appointment = get_object_or_404(Appointment, id=id)
+
+    payment = Payment.objects.get(appointment=appointment)
+
+    if payment.status == 'success':
+        payment.status = 'refund'
+        payment.save()
+    
+    appointment.status = 'cancelled'
+    appointment.save()
+    messages.success(request, "appointment cancelled")
+    return redirect('doctorappointmentlist')
+    

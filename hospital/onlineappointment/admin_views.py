@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from django.contrib.auth.models import User
 from datetime import date
+from django.contrib import messages
 
 from .forms import *
 
@@ -51,16 +52,36 @@ def totalPatient(request):
     return render(request, 'admin/totalpatient.html', {'patients':patients})
 
 def totalAppointment(request):
-    appointments = Appointment.objects.filter(status='confirmed').order_by('appointment_date','appointment_time')
+    appointments = Appointment.objects.all()
     return render(request, 'admin/totalAppointment.html', {'appointments':appointments})
 
 def editAppointment(request, id):
     appointment = get_object_or_404(Appointment, id=id)
     if request.method == 'POST':
+        old_date = appointment.appointment_date
+        old_time = appointment.appointment_time
+        old_doctor = appointment.doctor
+        old_patient = appointment.patient
+        old_status = appointment.status
+
         form = AppointmentForm(request.POST , instance=appointment)
         if form.is_valid():
+            AppointmentHistory.objects.create(appointment=appointment, doctor=old_doctor, patient = old_patient, old_date=old_date, old_time=old_time, old_status=old_status)
             form.save()
             return redirect('totalappointmentlist')
     else:
         form = AppointmentForm(instance=appointment)
     return render(request, 'admin/editappointment.html', {'form':form})
+
+def cancleAppointmentadmin(request, id):
+    appointment = get_object_or_404(Appointment, id=id)
+    payment = Payment.objects.get(appointment=appointment)
+
+    if payment.status == 'success':
+        payment.status = 'refund'
+        payment.save()
+
+    appointment.status = 'cancelled'
+    appointment.save()
+    messages.success(request, "appointment cancelled")
+    return redirect('totalappointmentlist')

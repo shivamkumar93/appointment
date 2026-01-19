@@ -29,6 +29,7 @@
               <td class="px-4 py-2">{{appointment.status}}</td>
               <td class="px-4 py-2">
                 <a href="{% url 'editappointment' appointment.id %}" class="text-md font-medium text-blue-600">Edit</a>
+                <a href="{% url 'admincancleappointment' appointment.id %}" class="text-md pl-2 font-medium text-red-600">Cancel</a>
               </td>
             </tr>
             {% empty %}

@@ -138,3 +138,4 @@ def editpatientdetails(request, patient_id):
     else:
         form = PatientForm(instance=patient)
     return render(request, 'user/editpatientdetail.html', {'form':form})
+

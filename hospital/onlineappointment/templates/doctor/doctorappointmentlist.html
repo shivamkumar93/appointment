@@ -149,6 +149,10 @@
                            class=" items-center px-3 py-1.5 text-sm
                                   bg-blue-600 text-white rounded-md
                                   hover:bg-blue-700 transition">Edit</a>
+                        <a href="{% url 'canclledappointment' appointment.id %}"
+                           class=" items-center px-3 py-1.5 text-sm
+                                  bg-red-600 text-white rounded-md
+                                  hover:bg-blue-700 transition">Canclled</a>
                     </td>
                 </tr>
                 {% empty %}

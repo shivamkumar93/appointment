@@ -62,7 +62,8 @@ class Payment(models.Model):
     PAYMENT_STATUS = (
         ('created','created'),
         ('success','success'),
-        ('failed','failed')
+        ('failed','failed'),
+        ('refund', 'refund')
     )
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, null=True, blank=True)
     appointment = models.ForeignKey(Appointment, on_delete=models.CASCADE, null=True, blank=True)
