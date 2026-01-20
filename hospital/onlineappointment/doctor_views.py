@@ -4,6 +4,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.utils.dateparse import parse_date
 from django.contrib import messages
 from .views import *
+from .emails import *
 
 
 
@@ -52,6 +53,7 @@ def doctoreditappointment(request, id):
                     old_date=old_date, old_time=old_time, old_status=old_status
                 )
                 form.save()
+                appointment_reschedule(appointment.patient, appointment)
             return redirect('doctorappointmentlist')
 
     else:
