@@ -27,7 +27,7 @@ urlpatterns = [
     path('logindoctor/', loginDoctor, name='logindoctor'),
     path('logoutdoctor/', logoutdoctor, name='logoutdoctor'),
     path('doctoreditappointment/<int:id>/', doctoreditappointment, name='doctoreditappointment'),
-    path('canclledappointment/<int:id>/', cancleAndrefund, name='canclledappointment'),
+    path('canclledappointment/<int:id>/', cancelAndrefund, name='canclledappointment'),
 
 
     # admin penal

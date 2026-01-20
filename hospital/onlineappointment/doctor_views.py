@@ -3,6 +3,8 @@ from .forms import *
 from django.contrib.auth import login, authenticate, logout
 from django.utils.dateparse import parse_date
 from django.contrib import messages
+from .views import *
+
 
 
 def loginDoctor(request):
@@ -62,17 +64,27 @@ def logoutdoctor(request):
     logout(request)
     return redirect('logindoctor')
 
-def cancleAndrefund(request, id):
+    
+def cancelAndrefund(request, id):
     appointment = get_object_or_404(Appointment, id=id)
+    payment = get_object_or_404(Payment, appointment=appointment)
 
-    payment = Payment.objects.get(appointment=appointment)
+    if payment.status == 'success' and payment.razorpay_payment_id:
+        try:
+            refund = client.payment.refund(payment.razorpay_payment_id)
 
-    if payment.status == 'success':
-        payment.status = 'refund'
-        payment.save()
-    
-    appointment.status = 'cancelled'
-    appointment.save()
-    messages.success(request, "appointment cancelled")
+            if refund['status'] == 'processed':
+                payment.status = 'refund'
+                payment.save()
+                appointment.status = 'cancelled'
+                appointment.save()
+
+                messages.success(request, "Appointment cancelled & refunded")
+                return redirect('doctorappointmentlist')
+
+        except Exception as e:
+            messages.error(request, f"Refund failed: {str(e)}")
+            return redirect('doctorappointmentlist')
+
+    messages.error(request, "Refund not possible")
     return redirect('doctorappointmentlist')
-    
