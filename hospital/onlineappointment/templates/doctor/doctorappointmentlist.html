@@ -6,7 +6,7 @@
 
     <div class="flex flex-col">
 
-        <div class="w-full flex border bg-sky-100 p-5 rounded">
+        <div class="w-full flex border bg-sky-100 px-5 py-10 rounded">
             <div class="w-4/12 ">
                 <div class="flex flex-col justify-center items-center">
                     <img src="{{doctor.image.url}}" alt="" class="size-24  border p-1 rounded-full border-[#1BC7C7]">
@@ -139,9 +139,16 @@
                     </td>
 
                     <td class="px-4 py-3 text-center">
-                        <span class="px-3 py-1 rounded-full text-xs text-green-600 font-semibold">
+                        
+                        {% if appointment.status == 'confirmed' %}
+                        <span class="px-3 py-1 rounded-full text-md text-green-600 font-normal">
                             {{ appointment.status }}
                         </span>
+                        {% else %}
+                        <span class="px-3 py-1 rounded-full text-md text-red-600 font-normal">
+                            {{ appointment.status }}
+                        </span>
+                        {% endif %}
                     </td>
 
                     <td class="px-4 py-3 text-center">
@@ -149,6 +156,7 @@
                            class=" items-center px-3 py-1.5 text-sm
                                   bg-blue-600 text-white rounded-md
                                   hover:bg-blue-700 transition">Edit</a>
+                                  
                         <a href="{% url 'canclledappointment' appointment.id %}"
                            class=" items-center px-3 py-1.5 text-sm
                                   bg-red-600 text-white rounded-md
