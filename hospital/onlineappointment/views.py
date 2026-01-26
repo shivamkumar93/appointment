@@ -139,3 +139,7 @@ def editpatientdetails(request, patient_id):
         form = PatientForm(instance=patient)
     return render(request, 'user/editpatientdetail.html', {'form':form})
 
+def paymentdetail(request, id):
+    appointment = get_object_or_404(Appointment, id=id)
+    paymentinfos = appointment.payment_set.all()
+    return render(request, 'user/paymentdetails.html', {'appointment':appointment, 'paymentinfos':paymentinfos})
