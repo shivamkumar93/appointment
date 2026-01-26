@@ -47,9 +47,8 @@ def patientdetails(request, appointment_id):
     form = PatientForm(request.POST or None)
     if form.is_valid():
         username = form.cleaned_data['phone_number']
-        user = User.objects.get(username=username)
-        if not user:
-            user = User.objects.create_user(username=username)
+        
+        user, created = User.objects.get_or_create( username=username)
         user.backend = 'django.contrib.auth.backends.ModelBackend'
         login(request, user)
 
