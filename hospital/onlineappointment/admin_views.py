@@ -5,7 +5,9 @@ from datetime import date
 from django.contrib import messages
 from .doctor_views import *
 from .forms import *
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def dashboard(request):
     today = date.today()
     data = {}
@@ -13,9 +15,13 @@ def dashboard(request):
     data['patient'] = Patient.objects.all().count()
     data['doctor'] = Doctor.objects.all().count()
     data['today'] = Appointment.objects.filter(appointment_date=today).count()
+    data['cancel'] = Appointment.objects.filter(status='cancelled').count()
     data['appointments'] = Appointment.objects.filter(appointment_date=today)
+    data['payment'] = Payment.objects.all().count()
+    data['refund'] = Payment.objects.filter(status = 'refund').count()
     return render(request, 'admin/dashboard.html', data)
 
+@login_required
 def department(request):
     if request.method == 'POST':
         form = DepartmentForm(request.POST or None)
@@ -27,6 +33,7 @@ def department(request):
 
     return render(request, 'admin/departmentform.html', {'form':form})
 
+@login_required
 def createdoctor(request):
     if request.method == 'POST':
         form = DoctorForm(request.POST or None, request.FILES or None)
@@ -43,18 +50,23 @@ def createdoctor(request):
         form = DoctorForm()
     return render(request, 'admin/doctorform.html', {'form':form})
 
+@login_required
 def totalDoctor(request):
     doctors = Doctor.objects.all()
     return render(request, 'admin/totaldoctor.html', {'doctors':doctors})
 
+
+@login_required
 def totalPatient(request):
     patients = Patient.objects.all()
     return render(request, 'admin/totalpatient.html', {'patients':patients})
 
+@login_required
 def totalAppointment(request):
     appointments = Appointment.objects.all()
     return render(request, 'admin/totalAppointment.html', {'appointments':appointments})
 
+@login_required
 def editAppointment(request, id):
     appointment = get_object_or_404(Appointment, id=id)
     if request.method == 'POST':
@@ -73,6 +85,8 @@ def editAppointment(request, id):
         form = AppointmentForm(instance=appointment)
     return render(request, 'admin/editappointment.html', {'form':form})
 
+
+@login_required
 def cancleAppointmentadmin(request, id):
     appointment = get_object_or_404(Appointment, id=id)
     payment = Payment.objects.get(appointment=appointment)

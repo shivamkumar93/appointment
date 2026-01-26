@@ -5,6 +5,7 @@ from django.utils.dateparse import parse_date
 from django.contrib import messages
 from .views import *
 from .emails import *
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -17,10 +18,14 @@ def loginDoctor(request):
         
         if user is not None:
             login(request, user)
-            return redirect('doctorappointmentlist')
+            if user.is_superuser:
+                return redirect('dashboard')
+            else:
+                return redirect('doctorappointmentlist')
     
     return render(request, 'doctor/login.html')
 
+@login_required
 def doctorappointmentlist(request):
     doctor = Doctor.objects.get(user = request.user)
     appointments = Appointment.objects.filter(doctor=doctor).order_by('appointment_date', 'appointment_time')
@@ -34,6 +39,7 @@ def doctorappointmentlist(request):
 
 from django.db import transaction
 
+@login_required
 def doctoreditappointment(request, id):
     appointment = get_object_or_404(Appointment, id=id)
 
@@ -61,12 +67,12 @@ def doctoreditappointment(request, id):
 
     return render(request,'doctor/doctoreditappointment.html', {'form': form})
 
-
+@login_required
 def logoutdoctor(request):
     logout(request)
     return redirect('logindoctor')
 
-    
+@login_required  
 def cancelAndrefund(request, id):
     appointment = get_object_or_404(Appointment, id=id)
     payment = get_object_or_404(Payment, appointment=appointment)
