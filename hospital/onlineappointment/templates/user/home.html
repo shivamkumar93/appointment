@@ -5,14 +5,14 @@
 <div class="w-full bg-sky-200 px-5 py-4 mt-20 ">
     <div class="flex flex-1 w-full">
         <div class="w-1/2  flex flex-col px-5 mt-16">
-            <h2 class="text-4xl tracking-wider font-semibold text-[#276969]">Compassionate Healthcare</h2>
-            <h2 class="text-4xl  mt-2 font-semibold text-[#1BC7C7]">For Your Family</h2>
-            <p class="text-md font-normal tracking-wide text-gray-600 mt-4">Experience world-class medical care with our
+            <h2 class="text-xl md:text-4xl md:font-semibold tracking-wider font-medium text-[#276969]">Compassionate Healthcare</h2>
+            <h2 class="text-xl md:text-4xl md:font-semibold  mt-2 font-medium text-[#1BC7C7]">For Your Family</h2>
+            <p class="md:text-md hidden lg:block font-normal tracking-wide text-gray-600 mt-4 ">Experience world-class medical care with our
                 team of dedicated specialists and patient-centered ap/our-doctorsproach. Your health is our priority.
             </p>
             <div class="flex mt-5">
-                <a href="{% url 'patientlogin' %}" class="inline-flex items-center gap-2 bg-[#1BC7C7] text-white px-4 py-3 text-lg leading-none
-              rounded transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                <a href="{% url 'patientlogin' %}" class="inline-flex items-center gap-2 bg-[#1BC7C7] text-white px-1 py-1 md:text-lg leading-none
+              rounded transition-all duration-300 hover:scale-105 hover:shadow-lg text-sm md:gap-1 md:px-4 md:py-3">
                     Check Appointment
                     <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 24 24">
@@ -62,14 +62,14 @@
 <div class="w-full bg-gray-50">
     <div class="flex flex-col justify-center items-center mb-16 ">
         <p class="mt-10 text-lg font-medium text-[#1BC7C7]">Our Medical Services</p>
-        <h1 class="text-5xl font-semibold tracking-wide mt-3">Comprehensive <span
+        <h1 class="md:text-5xl text-md md:font-semibold font-medium md:tracking-wide mt-3">Comprehensive <span
                 class="text-[#1BC7C7]">Healthcare</span> Solutions</h1>
-        <p class="mt-6 text-gray-600 text-lg ">Delivering excellence in healthcare with cutting-edge medical services
+        <p class="mt-6 text-gray-600 md:text-lg text-sm px-4 ">Delivering excellence in healthcare with cutting-edge medical services
             and </p>
         <span class="text-gray-600 text-lg"> compassionate care</span>
     </div>
-    <div class="p-6 ">
-        <div class="grid grid-cols-3 gap-6">
+    <div class="p-6 md:px-5">
+        <div class="grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 md:gap-6 gap-3 ">
             <div
                 class="flex flex-col items-center bg-white justify-center border gap-3 px-4 py-6 rounded-lg hover:shadow-lg">
                 <p class="bg-sky-100 hover:bg-sky-200 p-5 rounded-lg"><svg xmlns="http://www.w3.org/2000/svg"
@@ -128,13 +128,13 @@
     <div class="flex flex-col mt-10 ">
         <div class="flex flex-col justify-center text-center">
 
-            <h1 class="text-3xl font-semibold tracking-wide">Meet Our <span class="text-[#1BC7C7]">Healthcare
+            <h1 class="md:text-3xl md:font-semibold text-lg font-medium tracking-wide">Meet Our <span class="text-[#1BC7C7]">Healthcare
                     Professionals</span></h1>
-            <p class="text-gray-600 font-medium mt-4">Our team of experienced doctors and specialists are committed to
+            <p class="text-gray-600 md:font-medium text-sm mt-4">Our team of experienced doctors and specialists are committed to
                 providing exceptional care</p>
         </div>
         <div class="p-6  mt-10 ">
-            <div class="grid grid-cols-4 gap-10  ">
+            <div class="grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 md:gap-4 gap-3">
 
                 {% for doctor in doctors %}
                 <div
