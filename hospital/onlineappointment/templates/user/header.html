@@ -3,36 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>EasyCare Hospital</title>
     <script src="https://cdn.tailwindcss.com"></script>
     {% load static %}
 </head>
-<body>
-    <div class="flex w-full px-[3%] bg-gray-100 fixed top-0 left-0 z-50 justify-between py-4 shadow-sm">
-        <div class="flex flex-1 items-center gap-2">
-            <img src="{% static 'EasyCare.png' %}" alt="" class="w-16 h-16 rounded">
-            <a href="" class="text-gray-800 "> 
-                <h2 class=" text-xl font-semibold text-blue-600">Easy <span class="text-green-600">Care</span></h2>
-                <p class="text-gray-500">Hospital(purnea)</p>
-            </a>
-        </div>
-        <div class=" hidden md:flex gap-6 justify-between items-center">
-            <a href="{% url 'homepage' %}" class="text-gray-500 text-lg hover:text-[#1BC7C7] hover:bg-sky-200 px-2 py-1 rounded">Home</a>
-            <a href="" class="text-gray-500 text-lg hover:text-[#1BC7C7] hover:bg-sky-200 px-2 py-1 rounded">Service</a>
-            <a href="{% url 'doctorlist' %}" class="text-gray-500 text-lg hover:text-[#1BC7C7] hover:bg-sky-200 px-2 py-1 rounded">Our Doctors</a>
-            <a href="" class="text-gray-500 text-lg hover:text-[#1BC7C7] hover:bg-sky-200 px-2 py-1 rounded">About Us</a>
-        </div>
-        <!-- <button class="md:hidden text-2xl">
-            menu
-        </button> -->
-        <div class="flex flex-1 justify-end items-center">
-            <a href="{% url 'doctorlist' %}" class="text-xl font-normal items-center bg-[#276969] text-white text-center rounded py-2 px-3">Book Appointment</a>
-        </div>
+<body class="bg-slate-50">
 
+<!-- NAVBAR -->
+<header class="fixed top-0 left-0 w-full bg-white z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto ">
+        <div class="flex items-center justify-between h-24">
+
+            <!-- LOGO -->
+             <a href="{% url 'homepage' %}">
+
+                 <div class="flex items-center gap-3">
+                     <img src="{% static 'EasyCare.png' %}"
+                     class="w-16 h-16 rounded-md"
+                     alt="EasyCare Logo">
+                     <div>
+                         <h2 class="text-lg font-semibold text-teal-700">
+                             Easy<span class="text-teal-500">Care</span>
+                            </h2>
+                            <p class="text-xs text-slate-500">Hospital, Purnea</p>
+                        </div>
+                    </div>
+                </a>
+
+            <!-- DESKTOP MENU -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="{% url 'homepage' %}"
+                   class="text-slate-600 hover:text-teal-600 transition">
+                    Home
+                </a>
+                <a href="#"
+                   class="text-slate-600 hover:text-teal-600 transition">
+                    Services
+                </a>
+                <a href="{% url 'doctorlist' %}"
+                   class="text-slate-600 hover:text-teal-600 transition">
+                    Our Doctors
+                </a>
+                <a href="#"
+                   class="text-slate-600 hover:text-teal-600 transition">
+                    About Us
+                </a>
+            </nav>
+
+            <!-- DESKTOP CTA -->
+            <div class="hidden md:flex">
+                <a href="{% url 'doctorlist' %}"
+                   class="bg-teal-600 hover:bg-teal-700
+                          text-white px-5 py-2 rounded-md
+                          transition font-medium">
+                    Book Appointment
+                </a>
+            </div>
+
+            <!-- MOBILE MENU BUTTON -->
+            <button id="menuBtn"
+                    class="md:hidden text-slate-700 focus:outline-none">
+                <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none"
+                     viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
     </div>
+
+    <!-- MOBILE MENU -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+        <nav class="flex flex-col px-6 py-4 space-y-4">
+            <a href="{% url 'homepage' %}" class="text-slate-600 hover:text-teal-600">
+                Home
+            </a>
+            <a href="#" class="text-slate-600 hover:text-teal-600">
+                Services
+            </a>
+            <a href="{% url 'doctorlist' %}" class="text-slate-600 hover:text-teal-600">
+                Our Doctors
+            </a>
+            <a href="#" class="text-slate-600 hover:text-teal-600">
+                About Us
+            </a>
+
+            <a href="{% url 'doctorlist' %}"
+               class="bg-teal-600 text-white text-center py-2 rounded-md hover:bg-teal-700">
+                Book Appointment
+            </a>
+        </nav>
+    </div>
+</header>
+
+<!-- PAGE CONTENT -->
+<main class="pt-20">
     {% block content %}
-      
     {% endblock content %}
-    
+</main>
+
+<!-- MOBILE MENU SCRIPT -->
+<script>
+    const btn = document.getElementById('menuBtn');
+    const menu = document.getElementById('mobileMenu');
+
+    btn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+    });
+</script>
+
 </body>
 </html>
