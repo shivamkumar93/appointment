@@ -4,12 +4,71 @@
  
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
-<div class="min-h-screen bg-gray-50 mt-20 flex items-center justify-center">
-    <div class="w-full max-w-md border border-1 shadow bg-white text-center py-5 rounded-lg">
-        <h2 class="text-lg font-bold text-gray-600">Online Payment</h2>
-        <button id="rzp-button" type="button" class="text-lg font-medium text-green-600 underline hover:text-green-700">Pay Now</button>
+<div class="min-h-screen bg-slate-50 flex items-center justify-center px-4">
+
+    <div class="w-full max-w-md bg-white border border-slate-200 rounded-xl shadow-sm p-6">
+
+        <div class="text-center">
+            
+
+            <h2 class="text-xl font-semibold text-slate-800">
+                Online Payment
+            </h2>
+            <p class="text-sm text-slate-500 mt-1">
+                Secure payment for your appointment
+            </p>
+        </div>
+
+        
+        <div class="mt-6 bg-slate-50 border border-slate-200 rounded-lg p-4">
+
+            <div class="flex justify-between">
+                <p class="text-slate-600">Consultation Fee</p>
+                <p class="font-semibold text-slate-800">
+                    ₹{{ payment.doctor.consultation_fees }}/-
+                </p>
+            </div>
+
+            <div class="flex justify-between mt-2">
+                <p class="text-slate-600">Payment Method</p>
+                <p class="font-medium text-slate-700">Razorpay</p>
+            </div>
+
+            <hr class="my-3">
+
+            <div class="flex justify-between">
+                <p class="text-lg font-bold text-slate-800">Total</p>
+                <p class="text-lg font-bold text-teal-600">
+                    ₹{{ payment.doctor.consultation_fees }}/-
+                </p>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <button id="rzp-button"
+                type="button"
+                class="mt-6 w-full bg-teal-600 hover:bg-teal-700
+                       text-white font-medium py-3 rounded-lg
+                       transition flex items-center justify-center gap-2">
+
+            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none"
+                 viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 6v12m6-6H6"/>
+            </svg>
+
+            Pay Now
+        </button>
+
+        <!-- FOOTER NOTE -->
+        <p class="text-xs text-slate-500 text-center mt-4">
+            Your payment is secure and encrypted
+        </p>
+
     </div>
 </div>
+
 
 <script>
 var options = {

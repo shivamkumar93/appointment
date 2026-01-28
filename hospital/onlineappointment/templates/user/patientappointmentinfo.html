@@ -1,7 +1,7 @@
 {% extends 'user/header.html' %}
 
 {% block content %}
-<div class="flex flex-1 min-h-screen mt-20 bg-gray-50 ">
+<div class="flex flex-1 bg-gray-50 ">
 
     <div class="flex flex-col w-full px-[12%] py-5 ">
         <div class="flex flex-1 justify-between">
@@ -23,7 +23,7 @@
 
                 <div class="flex flex-col gap-3">
                     <h2 class="text-lg font-semibold text-gray-500">Doctor Details</h2>
-                    <div class="flex flex-1 px-3 justify-between">
+                    <div class="flex flex-1 px-3 justify-between ">
                         <p class="text-lg font-normal text-gray-800">{{appointment.doctor.name}}</p>
                         <p class="text-lg font-normal text-gray-800">{{appointment.doctor.department.title}}</p>
                         <p>{{appointment.doctor.consultation_fees}}/-</p>
@@ -32,7 +32,7 @@
                 <hr>
                 <div class="flex flex-col gap-3">
                     <h2 class="text-lg font-semibold text-gray-500">Appointment details</h2>
-                    <div class="flex flex-1 px-3 justify-between ">
+                    <div class="flex flex-1 px-3 justify-between sm:flex-row flex-col ">
                         <p>Date : <span class="text-gray-500">{{appointment.appointment_date}}</span></p>
                         <p>Time : <span class="text-gray-500">{{appointment.appointment_time}}</span></p>
                         <p>Status : <span class="text-gray-500">{{appointment.status}}</span></p>
@@ -41,13 +41,13 @@
                 <hr>
                 <div class="flex flex-col gap-3">
                     <div class="flex flex-1 items-center justify-between">
-                        <h2 class="text-lg font-semibold text-gray-500">patient details</h2>
+                        <h2 class="text-md font-normal sm:font-semibold text-gray-500 sm:text-lg">patient details</h2>
                         
                         {% if forloop.first %}
-                        <a href="{% url 'editpatientdetails' appointment.patient_id %}" class="text-lg font-medium text-blue-600 underline">Edit Patient details</a>
+                        <a href="{% url 'editpatientdetails' appointment.patient_id %}" class="text-md font-normal sm:font-medium  text-blue-600 underline sm:text-lg">Edit Patient details</a>
                         {% endif %}
                     </div>
-                    <div class="flex flex-1 px-3 justify-between gap-5">
+                    <div class="flex flex-1 px-3 justify-between gap-5 sm:flex-row flex-col">
                         <p>Name: <span class="text-gray-600">{{appointment.patient.fullname}}</span> </p>
                         <p>Phone: <span class="text-gray-600">{{appointment.patient.phone_number}}</span> </p>
                         <p>Address: <span class="text-gray-600">{{appointment.patient.address}},{{appointment.patient.city}},{{appointment.patient.state}},({{appointment.patient.pincode}})</span></p>

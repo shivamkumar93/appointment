@@ -1,10 +1,10 @@
 {% extends 'user/header.html' %}
 {% load tailwind_filters %}
 {% block content %}
-<div class="flex flex-1 mt-20 ">
+<div class="flex flex-1  ">
 <div class="flex flex-1 px-[10%] py-10">
-    <form action="" method="post" class="bg-white w-full border p-4">
-        <h2 class="text-xl font-bold ">Patient Details</h2>
+    <form action="" method="post" class="bg-white w-full border px-10 py-5 rounded-lg">
+        <h2 class="text-xl font-bold justify-center text-center">Patient Details</h2>
         {% csrf_token %}
         {{form|crispy}}
         <button type="submit" class="text-white bg-blue-500 hover:bg-blue-600 py-2 px-3 w-full rounded">Next </button>
