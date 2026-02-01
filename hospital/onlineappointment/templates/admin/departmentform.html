@@ -2,7 +2,7 @@
 
 {% block content %}
 
- <div class="flex flex-col h-screen items-center justify-center">
+<div class="flex  items-center justify-center">
     <div class="bg-white p-10 border rounded-lg shadow">
         <h2 class="text-lg font-semibold text-[#064E3B]">Create Doctor Department Here</h2>
         <hr>
@@ -10,9 +10,36 @@
         <form action="" method="post" class="mt-3">
             {% csrf_token %}
             {{form|crispy}}
-            <button type="submit" class="border border-1 py-1 hover:bg-blue-600 text-white bg-blue-500 rounded w-full">Submit</button>
+            <button type="submit"
+                class="border border-1 py-1 hover:bg-blue-600 text-white bg-blue-500 rounded w-full">Submit</button>
         </form>
     </div>
-    </div>
-  
+</div>
+<div class="flex flex-1 mt-5">
+    <table class="border border-1 border-gray-200 w-full">
+        <thead>
+            <tr>
+                <th class="border py-1">id</th>
+                <th class="border py-1">Department</th>
+                <th class="border py-1">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for department in departments %}
+                
+            
+            <tr class="items-center text-center">
+                <td class="border p-1">{{department.id}}</td>
+                <td class="border p-1">{{department.title}}</td>
+                <td>
+                    <a href="{% url 'deletedepartment' department.id %}" class="text-red-600 hover:text-red-800 hover:underline">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
 {% endblock content %}

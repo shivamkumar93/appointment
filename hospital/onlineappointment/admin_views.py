@@ -30,8 +30,13 @@ def department(request):
             return redirect(department)
     else:
         form = DepartmentForm()
+    departments = Department.objects.all()
+    return render(request, 'admin/departmentform.html', {'form':form, 'departments':departments})
 
-    return render(request, 'admin/departmentform.html', {'form':form})
+def deletedepartment(request, id):
+    dep = Department.objects.get(id=id)
+    dep.delete()
+    return redirect('departmentform')
 
 @login_required
 def createdoctor(request):

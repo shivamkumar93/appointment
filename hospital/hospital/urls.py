@@ -34,6 +34,7 @@ urlpatterns = [
     # admin penal
     path('dashboard/', dashboard, name='dashboard'),
     path('department/',department, name="departmentform" ),
+    path('department/delete/<int:id>/',deletedepartment, name="deletedepartment" ),
     path('doctorform/',createdoctor, name="doctorform" ),
     path('totaldoctor/', totalDoctor, name="totaldoctorlist"),
     path('totalpatient/', totalPatient, name="totalpatientlist"),
