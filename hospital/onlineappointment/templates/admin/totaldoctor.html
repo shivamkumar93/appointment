@@ -17,6 +17,7 @@
               <th class="px-4 py-3 text-left">Department</th>
               <th class="px-4 py-3 text-left">Qualification</th>
               <th class="px-4 py-3 text-left">Fees</th>
+              <th class="px-4 py-3 text-left">Action</th>
             </tr>
           </thead>
 
@@ -28,6 +29,10 @@
               <td class="px-4 py-2">{{doctor.department}}</td>
               <td class="px-4 py-2 ">{{doctor.qualification}}</td>
               <td class="px-4 py-2">{{doctor.consultation_fees}}</td>
+              <td class=" py-2 ">
+                <a href="" class="text-green-700 font-bold hover:underline">Edit</a>
+                <a href="{% url 'deletedoctor' doctor.id %}" class="text-red-600 font-bold hover:underline ml-2">Delete</a>
+              </td>
             </tr>
             {% empty %}
             <tr>

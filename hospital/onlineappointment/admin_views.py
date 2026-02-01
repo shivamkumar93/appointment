@@ -33,6 +33,7 @@ def department(request):
     departments = Department.objects.all()
     return render(request, 'admin/departmentform.html', {'form':form, 'departments':departments})
 
+@login_required
 def deletedepartment(request, id):
     dep = Department.objects.get(id=id)
     dep.delete()
@@ -60,6 +61,10 @@ def totalDoctor(request):
     doctors = Doctor.objects.all()
     return render(request, 'admin/totaldoctor.html', {'doctors':doctors})
 
+def deleteDoctor(request, id):
+    doctor = Doctor.objects.get(id=id)
+    doctor.delete()
+    return redirect('totaldoctorlist')
 
 @login_required
 def totalPatient(request):
