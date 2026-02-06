@@ -142,3 +142,21 @@ def paymentdetail(request, id):
     appointment = get_object_or_404(Appointment, id=id)
     paymentinfos = appointment.payment_set.all()
     return render(request, 'user/paymentdetails.html', {'appointment':appointment, 'paymentinfos':paymentinfos})
+
+def paymentRefund(request, id):
+    appointment = get_object_or_404(Appointment, id=id)
+    payment = Payment.objects.get(appointment=appointment)
+
+    if payment.status == 'success' and payment.razorpay_payment_id:
+        try:
+            refund = client.payment.refund(payment.razorpay_payment_id)
+            if refund['status'] == 'processed':
+                payment.status = 'refund'
+                payment.save()
+                appointment.status = 'cancelled'
+                appointment.save()
+        except:
+            pass
+
+    messages.success(request, 'successfully appointment cancelled')
+    return redirect('patientAppointmentinfo')

@@ -22,6 +22,7 @@ urlpatterns = [
     path('editpatientdetail/<int:patient_id>/', editpatientdetails, name='editpatientdetails'),
     path('successpage/', success, name="successpage"),
     path('paymentdetails/<int:id>/', paymentdetail, name="paymentdetails"),
+    path('paymentRefund/<int:id>/', paymentRefund, name="paymentRefund" ),
     # doctor penal
     
     path('doctorappointmentlist/', doctorappointmentlist, name="doctorappointmentlist"),
