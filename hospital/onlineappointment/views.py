@@ -9,6 +9,8 @@ import json
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
+from django.utils import timezone
+from datetime import timedelta
 client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
 
 
@@ -143,20 +145,87 @@ def paymentdetail(request, id):
     paymentinfos = appointment.payment_set.all()
     return render(request, 'user/paymentdetails.html', {'appointment':appointment, 'paymentinfos':paymentinfos})
 
+
+
 def paymentRefund(request, id):
     appointment = get_object_or_404(Appointment, id=id)
     payment = Payment.objects.get(appointment=appointment)
 
     if payment.status == 'success' and payment.razorpay_payment_id:
         try:
-            refund = client.payment.refund(payment.razorpay_payment_id)
+            total_amount = payment.doctor.consultation_fees  
+            cancellation_charge = total_amount * 10 / 100
+            refund_amount = total_amount - cancellation_charge
+
+           
+            refund_amount_paise = int(refund_amount * 100)
+
+            print(refund_amount_paise)
+            refund = client.payment.refund(payment.razorpay_payment_id, {"amount": refund_amount_paise } )
+
             if refund['status'] == 'processed':
                 payment.status = 'refund'
                 payment.save()
                 appointment.status = 'cancelled'
                 appointment.save()
-        except:
-            pass
 
-    messages.success(request, 'successfully appointment cancelled')
-    return redirect('patientAppointmentinfo')
+                messages.success(
+                    request,
+                    f'Appointment cancelled. ₹{cancellation_charge} charged, ₹{refund_amount} refunded.'
+                )
+
+        except :
+            pass
+    return redirect('paymentdetails')
+
+
+
+# def paymentRefund(request, id):
+#     appointment = get_object_or_404(Appointment, id=id)
+#     payment = get_object_or_404(Payment, appointment=appointment)
+
+#     today = timezone.localdate()
+#     appointment_date = appointment.appointment_date  # DateField
+
+#     # next-day cancel rule
+#     if today < appointment_date + timedelta(days=1):
+#         messages.error(request, 'Appointment can be cancelled only after 24 hours')
+#         return redirect('patientAppointmentinfo')
+
+#     if payment.status != 'success' or not payment.razorpay_payment_id:
+#         messages.error(request, 'Payment not eligible for refund')
+#         return redirect('paymentdetails')
+
+#     try:
+#         # consultation fees in paise
+#         total_amount = int(payment.doctor.consultation_fees * 100)
+
+#         # 10% cancellation charge
+#         charge = int(total_amount * 0.10)
+#         refund_amount = total_amount - charge
+
+#         refund = client.payment.refund(
+#             payment.razorpay_payment_id,
+#             {
+#                 "amount": refund_amount
+#             }
+#         )
+
+#         if refund['status'] in ['processed', 'pending']:
+#             payment.status = 'refund'
+#             payment.save()
+
+#             appointment.status = 'cancelled'
+#             appointment.save()
+
+#             messages.success(
+#                 request,
+#                 'Appointment cancelled successfully. 10% cancellation charge applied.'
+#             )
+
+#     except Exception as e:
+#         messages.error(request, f'Refund failed: {str(e)}')
+
+#     return redirect('paymentdetails')
+
+
