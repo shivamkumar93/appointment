@@ -42,6 +42,10 @@ class Patient(models.Model):
 
     
 class Appointment(models.Model):
+    PAYMENT_MODE = [
+        ('online','online'),
+        ('offline','offline')
+    ]
     STATUS_CHOICES = [
         ('pending', 'pending'),
         ('confirmed', 'confirmed'),
@@ -53,6 +57,7 @@ class Appointment(models.Model):
     appointment_date = models.DateField()
     appointment_time = models.TimeField()
     status = models.CharField(max_length=30, choices=STATUS_CHOICES, default='pending' )
+    payment_mode = models.CharField(max_length=10, choices=PAYMENT_MODE, default='online')
 
     def __str__(self):
         return f"{self.doctor.name}- {self.appointment_date}"

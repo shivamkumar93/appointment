@@ -248,9 +248,11 @@
             </div>
         </div>
 
-        <div class="flex flex-1 justify-end mt-3">
+        <div class="flex flex-1 justify-end mt-3 gap-4">
+            <a href="{% url 'offlinepayment' appointment.id %}"
+                class="text-white bg-green-600 hover:bg-blue-700 py-2 px-6 rounded">Offline Payment </a>
             <a href="{% url 'payment' appointment.id %}"
-                class="text-white bg-blue-600 hover:bg-blue-700 py-2 px-6 rounded">next</a>
+                class="text-white bg-blue-600 hover:bg-blue-700 py-2 px-6 rounded">Online Payment</a>
         </div>
     </div>
 </div>
