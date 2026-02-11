@@ -114,3 +114,15 @@ def cancleAppointmentadmin(request, id):
     
     messages.success(request, "appointment cancelled")
     return redirect('totalappointmentlist')
+
+@login_required
+def offlineAppointment(request):
+    appointments = Appointment.objects.filter(payment_mode = 'offline')
+    return render(request, 'admin/offlineappointment.html', {'appointments':appointments})
+
+@login_required
+def conformofflineAppointment(request, id):
+    appointment = get_object_or_404(Appointment, id=id)
+    appointment.status = 'confirmed'
+    appointment.save()
+    return redirect('offlineappointment')

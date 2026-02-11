@@ -42,6 +42,8 @@ urlpatterns = [
     path('doctor/delete/<int:id>/', deleteDoctor, name="deletedoctor"),
     path('totalpatient/', totalPatient, name="totalpatientlist"),
     path('totalappointment/', totalAppointment, name="totalappointmentlist"),
+    path('offlineappointment/', offlineAppointment, name="offlineappointment"),
+    path('conformofflineappointment/<int:id>/', conformofflineAppointment, name="conformofflineappointment"),
     path('editappointment/<int:id>/', editAppointment, name="editappointment"),
     path('admincancleappointment/<int:id>/', cancleAppointmentadmin, name="admincancleappointment")
 ]
