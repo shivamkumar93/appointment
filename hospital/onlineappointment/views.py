@@ -9,8 +9,7 @@ import json
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
-from django.utils import timezone
-from datetime import timedelta
+
 client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
 
 
@@ -169,10 +168,7 @@ def paymentRefund(request, id):
                 appointment.status = 'cancelled'
                 appointment.save()
 
-                messages.success(
-                    request,
-                    f'Appointment cancelled. ₹{cancellation_charge} charged, ₹{refund_amount} refunded.'
-                )
+                messages.success(request, f'Appointment cancelled. ₹{cancellation_charge} charged, ₹{refund_amount} refunded.')
 
         except :
             pass
