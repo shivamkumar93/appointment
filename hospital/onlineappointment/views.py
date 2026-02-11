@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+
 from .models import *
 from django.contrib import messages
 from django.urls import reverse
@@ -9,7 +10,9 @@ import json
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
-
+from django.utils import timezone
+from datetime import date, datetime
+from django.utils.dateparse import parse_date
 client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
 
 
@@ -35,13 +38,20 @@ def appointmentdate(request, doctor_id):
         date = request.POST.get('appointment_date')
         time = request.POST.get('appointment_time')
 
+        user_date = parse_date(date)
+        user_time = datetime.strptime(time, "%H:%M:%S").time()
+
+        now = timezone.now()
         exists = Appointment.objects.filter(doctor=doctor,appointment_date = date, appointment_time = time, status = 'confirmed').exists()
         if exists:
             return render(request, 'user/appointmentdate.html', {
                 'doctor': doctor, 'error': "This slot is already booked. Please choose another time."})
 
-        appointment = Appointment.objects.create(doctor=doctor, appointment_date = date, appointment_time= time, status = 'pending')
-        return redirect('patientdetail', appointment_id=appointment.id)
+        if user_date > now.date():
+
+            appointment = Appointment.objects.create(doctor=doctor, appointment_date = date, appointment_time= time, status = 'pending')
+            return redirect('patientdetail', appointment_id=appointment.id)
+        
     return render(request, 'user/appointmentdate.html', {'doctor':doctor})
 
 def patientdetails(request, appointment_id):
@@ -134,7 +144,7 @@ def editpatientdetails(request, patient_id):
         form = PatientForm(request.POST , instance=patient)
         if form.is_valid():
             form.save()
-            return redirect('patientAppointmentinfo')
+            return redirect('editpatientdetails')
     else:
         form = PatientForm(instance=patient)
     return render(request, 'user/editpatientdetail.html', {'form':form})

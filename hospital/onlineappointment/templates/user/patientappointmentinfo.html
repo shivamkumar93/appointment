@@ -46,9 +46,9 @@
                     <div class="flex flex-1 items-center justify-between">
                         <h2 class="text-md font-normal sm:font-semibold text-gray-500 sm:text-lg">patient details</h2>
                         
-                        {% if forloop.first %}
+                        <!-- {% if forloop.first %}
                         <a href="{% url 'editpatientdetails' appointment.patient_id %}" class="text-md font-normal sm:font-medium  text-blue-600 underline sm:text-lg">Edit Patient details</a>
-                        {% endif %}
+                        {% endif %} -->
                     </div>
                     <div class="flex flex-1 px-3 justify-between gap-5 sm:flex-row flex-col">
                         <p>Name: <span class="text-gray-600">{{appointment.patient.fullname}}</span> </p>
