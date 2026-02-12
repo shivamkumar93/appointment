@@ -23,7 +23,7 @@
                      alt="EasyCare Logo">
                      <div>
                          <h2 class="text-lg font-semibold text-teal-700">
-                             Easy<span class="text-teal-500">Care</span>
+                             Easy<span class="text-blue-600">Care</span>
                             </h2>
                             <p class="text-xs text-slate-500">Hospital, Purnea</p>
                         </div>
@@ -33,20 +33,20 @@
             <!-- DESKTOP MENU -->
             <nav class="hidden md:flex items-center gap-8">
                 <a href="{% url 'homepage' %}"
-                   class="text-slate-600 hover:text-teal-600 transition">
+                   class="text-slate-600 hover:text-blue-600 transition">
                     Home
                 </a>
-                <a href="#"
-                   class="text-slate-600 hover:text-teal-600 transition">
-                    Services
-                </a>
                 <a href="{% url 'doctorlist' %}"
-                   class="text-slate-600 hover:text-teal-600 transition">
-                    Our Doctors
-                </a>
+                class="text-slate-600 hover:text-blue-600 transition">
+                Our Doctors
+            </a>
+            
                 <a href="#"
-                   class="text-slate-600 hover:text-teal-600 transition">
+                   class="text-slate-600 hover:text-blue-600 transition">
                     About Us
+                </a>
+                <a href="{% url 'logindoctor' %}" class="text-blue-600 hover:text-blue-800 font-medium transition ">
+                    Doctor login
                 </a>
             </nav>
 
@@ -75,16 +75,16 @@
     <!-- MOBILE MENU -->
     <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
         <nav class="flex flex-col px-6 py-4 space-y-4">
-            <a href="{% url 'homepage' %}" class="text-slate-600 hover:text-teal-600">
+            <a href="{% url 'homepage' %}" class="text-slate-600 hover:text-blue-600">
                 Home
             </a>
-            <a href="#" class="text-slate-600 hover:text-teal-600">
+            <a href="#" class="text-slate-600 hover:text-blue-600">
                 Services
             </a>
-            <a href="{% url 'doctorlist' %}" class="text-slate-600 hover:text-teal-600">
+            <a href="{% url 'doctorlist' %}" class="text-slate-600 hover:text-blue-600">
                 Our Doctors
             </a>
-            <a href="#" class="text-slate-600 hover:text-teal-600">
+            <a href="#" class="text-slate-600 hover:text-blue-600">
                 About Us
             </a>
 

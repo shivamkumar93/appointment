@@ -2,11 +2,11 @@
 
 {% block content %}
 <div class="w-full px-[10%] mt-4 py-10">
-    <div class="flex flex-1 bg-gradient-to-r from-[#1BC7C7] to-[#276969] border rounded-lg">
+    <div class="flex flex-1 bg-gradient-to-r from-blue-300 to-blue-500 border rounded-lg">
         <div class="flex flex-col md:flex-row flex-1 justify-between items-center px-5 py-4">
             <div class="flex flex-col gap-2">
                 <h3 class="text-white text-xl font-semibold ">Book Your Appointment</h3>
-                <p class="text-gray-300 md:block hidden text-sm ">Schedule your visit with our specialists</p>
+                <p class="text-white md:block hidden text-sm ">Schedule your visit with our specialists</p>
             </div>
             <div class="">
                 <a href="{% url 'patientlogin' %}" class="flex items-center gap-2  ">
@@ -36,7 +36,7 @@
             <div class="flex flex-1 gap-2 lg:p-4 md:p-3 p-1 overflow-x-auto sm:overflow-x-visible">
 
                 <button type="submit" name="department" value=""
-                    class="bg-[#1BC7C7] py-1 px-2 rounded-lg items-center text-white">
+                    class="bg-blue-600 py-1 px-2 rounded-lg items-center text-white">
                     All Departments
                 </button>
 
@@ -56,12 +56,12 @@
 
             {% for doctor in doctors %}
             <div
-                class="flex flex-col justify-center bg-sky-100 text-center   border  pb-4 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105">
+                class="flex flex-col justify-center bg-gray-100 text-center   border  pb-4 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105">
                 <a href="">
                     <div class="flex flex-1 justify-center mt-4 ">
 
                         <img src="{{doctor.image.url}}" alt=""
-                            class="w-28 h-28 rounded-full p-1 border border-[#1BC7C7]">
+                            class="w-28 h-28 rounded-full p-1 border border-blue-500">
                     </div>
                     <h1 class="text-xl font-medium  px-4 mt-2">{{doctor.name}}</h1>
                     <!-- <p class="text-blue-500 px-4 mt-1">{{doctor.qualification}}</p> -->
@@ -69,7 +69,7 @@
 
                     <a href="{% url 'appointmentdate' doctor.id %}" class="px-4 mt-2">
                         <p
-                            class="inline-flex  bg-[#1BC7C7] items-center justify-center w-full py-2 rounded-lg hover:bg-[#276969] text-white gap-2">
+                            class="inline-flex  bg-blue-600 items-center justify-center w-full py-2 rounded-lg hover:bg-blue-700 text-white gap-2">
 
                             <span> Select Doctor</span>
                         </p>
