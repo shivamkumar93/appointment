@@ -2,16 +2,15 @@
 
 {% load static %}
 {% block content %}
-<div class="w-full bg-gray-200 px-5 py-8 mt-4  ">
-    <div class="flex flex-1 w-full">
+<div class="w-full bg-blue-600 px-5 sm:mt-4 -mt-3 ">
+    <div class="flex  flex-1 w-full  items-center">
         <div class="w-1/2  flex flex-col pl-[7%]  mt-16">
-            <h2 class="text-xl md:text-4xl md:font-semibold  font-medium text-gray-800">Medical Healthcare</h2>
-            <h2 class="text-xl md:text-4xl md:font-semibold  mt-2 font-medium text-gray-800">Center Booking Software
+            <h2 class="text-md md:text-6xl md:font-semibold  font-medium text-white">Book Appointment With Trusted Doctors</h2>
             </h2>
-            <p class="md:text-md hidden lg:block font-normal tracking-wide text-gray-600 mt-4 ">for all medical, health
-                and wellness businesses</p>
-            <div class="flex mt-10">
-                <a href="{% url 'patientlogin' %}" class="inline-flex items-center bg-red-600 text-white px-1 py-1 md:text-md text-sm leading-none
+            <p class="sm:text-md hidden lg:block font-normal  text-white mt-4 ">Simply browse through our extensive list of trusted doctors,
+schedule your appointment hassle-free.</p>
+            <div class="flex  lg:mt-10 mt-3 mb-5">
+                <a href="{% url 'patientlogin' %}" class="inline-flex items-center bg-white text-gray-800 px-1 py-1 md:text-md text-sm leading-none
               rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg md:gap-1  md:px-4 md:py-2">
                     Check Appointment
                     <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -22,77 +21,32 @@
                 </a>
             </div>
 
-            <div class="flex flex-1 sm:flex-row py-5 mb-10 flex-col mt-2">
-                <div class="flex flex-1 gap-3 items-center ">
-                    <p class=" text-center bg-sky-50 p-2 rounded-full sm:block hidden"><svg
-                            class="w-8 h-8 text-[#1BC7C7] dark:text-white" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                        </svg>
-                    </p>
-                    <div class="flex flex-col">
-                        <h1 class="text-xl font-bold sm:block hidden">10+</h1>
-                        <p class="text-gray-600 text-lg font-normal">10 Years Experience</p>
-                    </div>
-                </div>
-                <div class="flex flex-1 gap-2 items-center">
-                    <p class=" text-center bg-sky-50 p-2 rounded-full sm:block hidden"><svg
-                            xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#1BC7C7]" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z">
-                            </path>
-                        </svg>
-                    </p>
-                    <div class="flex flex-col">
-                        <h1 class="text-xl font-bold">5000+</h1>
-                        <p class="text-gray-600 text-lg font-normal">Successful Treatments</p>
-                    </div>
-                </div>
-
-            </div>
+            
         </div>
-        <div class="w-1/2 px-8 py-5 mt-8">
-            <img src="{% static 'ala2-remove.png' %}" alt="logo" class="rounded-lg">
+        <div class="w-1/2 px-8  mt-8">
+            <img src="{% static 'wallpaper.png' %}" alt="logo" class="rounded-lg size-105">
         </div>
     </div>
 
 </div>
 
 <div class="w-full bg-gray-50">
-    <div class="flex flex-col justify-center items-center py-10  ">
-
-        <p class="mt-6 text-gray-600 md:text-xl text-sm px-4 ">Delivering excellence in healthcare with cutting-edge
-            medical services </p>
-        <span class="text-gray-600 text-sm md:text-xl">and compassionate care</span>
+    <div class="flex flex-col justify-center items-center text-center py-16  ">
+        <h2 class="text-3xl font-semibold ">Find by Speciality</h2>
+        <p class="mt-4 font-medium text-gray-800 md:text-sm text-sm px-4 ">Simply browse through our extensive list of trusted doctors, <br> schedule your appointment hassle-free. </p>
     </div>
     <!-- doctor department box -->
-    <div class="p-6 md:px-10">
+    <div class="p-3 md:px-10 justify-center items-center flex flex-1">
         <div
-            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 px-[7%] justify-center items-center">
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 px-[12%] ">
 
             <!-- Card -->
-            <div class=" flex flex-col items-center justify-center bg-white border border-gray-200 rounded-xl p-6
-             transition-all duration-300 hover:-translate-y-2 ">
-
-                <div class="flex items-center justify-center  w-14 h-14 rounded-full  transition">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#1BC7C7] transition" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                    </svg>
-                </div>
-
-                <h1 class="mt-4 text-center text-lg font-semibold text-gray-800 transition">
-                    Clinic & Doctors
-                </h1>
-            </div>
+            
             <div class=" flex flex-col items-center justify-center bg-white border border-gray-200 rounded-xl p-6
              transition-all duration-300 hover:-translate-y-2 ">
 
                 <div class="flex items-center justify-center w-14 h-14 rounded-full  transition">
-                    <svg class="w-8 h-8 text-[#1BC7C7] dark:text-white" aria-hidden="true"
+                    <svg class="w-8 h-8 text-blue-500 dark:text-white" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
                             d="M16 19h4a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-2m-2.236-4a3 3 0 1 0 0-4M3 18v-1a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm8-10a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
@@ -108,7 +62,7 @@
              transition-all duration-300 hover:-translate-y-2 ">
 
                 <div class="flex items-center justify-center w-14 h-14 rounded-full  transition">
-                    <svg class="w-[26px] h-[26px] text-[#1BC7C7] dark:text-white" aria-hidden="true"
+                    <svg class="w-[26px] h-[26px] text-blue-500 dark:text-white" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 18.5A2.493 2.493 0 0 1 7.51 20H7.5a2.468 2.468 0 0 1-2.4-3.154 2.98 2.98 0 0 1-.85-5.274 2.468 2.468 0 0 1 .92-3.182 2.477 2.477 0 0 1 1.876-3.344 2.5 2.5 0 0 1 3.41-1.856A2.5 2.5 0 0 1 12 5.5m0 13v-13m0 13a2.493 2.493 0 0 0 4.49 1.5h.01a2.468 2.468 0 0 0 2.403-3.154 2.98 2.98 0 0 0 .847-5.274 2.468 2.468 0 0 0-.921-3.182 2.477 2.477 0 0 0-1.875-3.344A2.5 2.5 0 0 0 14.5 3 2.5 2.5 0 0 0 12 5.5m-8 5a2.5 2.5 0 0 1 3.48-2.3m-.28 8.551a3 3 0 0 1-2.953-5.185M20 10.5a2.5 2.5 0 0 0-3.481-2.3m.28 8.551a3 3 0 0 0 2.954-5.185" />
@@ -124,7 +78,7 @@
              transition-all duration-300 hover:-translate-y-2 ">
 
                 <div class="flex items-center justify-center w-14 h-14 rounded-full  transition">
-                    <svg class="w-[26px] h-[26px] text-[#1BC7C7] dark:text-white" aria-hidden="true"
+                    <svg class="w-[26px] h-[26px] text-blue-500 dark:text-white" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                             stroke-miterlimit="10" stroke-width="2"
@@ -137,26 +91,12 @@
                     Orthopedice
                 </h1>
             </div>
+            
             <div class=" flex flex-col items-center justify-center bg-white border border-gray-200 rounded-xl p-6
              transition-all duration-300 hover:-translate-y-2 ">
 
                 <div class="flex items-center justify-center w-14 h-14 rounded-full  transition">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-[#1BC7C7] transition" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                    </svg>
-                </div>
-
-                <h1 class="mt-4 text-center text-lg font-semibold text-gray-800 transition">
-                    General Practitioner
-                </h1>
-            </div>
-            <div class=" flex flex-col items-center justify-center bg-white border border-gray-200 rounded-xl p-6
-             transition-all duration-300 hover:-translate-y-2 ">
-
-                <div class="flex items-center justify-center w-14 h-14 rounded-full  transition">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-[#1BC7C7] transition" fill="none"
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-blue-500 transition" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -171,7 +111,22 @@
              transition-all duration-300 hover:-translate-y-2 ">
 
                 <div class="flex items-center justify-center w-14 h-14 rounded-full  transition">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-[#1BC7C7] transition" fill="none"
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-blue-500 transition" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
+                </div>
+
+                <h1 class="mt-4 text-center text-lg font-semibold text-gray-800 transition">
+                    Gastroenterologist
+                </h1>
+            </div>
+            <div class=" flex flex-col items-center justify-center bg-white border border-gray-200 rounded-xl p-6
+             transition-all duration-300 hover:-translate-y-2 ">
+
+                <div class="flex items-center justify-center w-14 h-14 rounded-full  transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-blue-500 transition" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -186,43 +141,29 @@
         </div>
     </div>
 
-    <div class="flex flex-1 justify-center mt-7">
-        <a href="" class="bg-gray-400 text-white px-6 text-lg py-1 items-center gap-2  mb-10 rounded-full flex">Explore
-            All
-            Services <span><svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M19 12H5m14 0-4 4m4-4-4-4" />
-                </svg>
-            </span></a>
-    </div>
+   
 
 </div>
 <!-- Doctor list for select -->
-<div class="w-full">
-    <div class="flex flex-col mt-7 ">
+<div class="w-full ">
+    <div class="flex flex-col mt-20 ">
         <div class="flex flex-col justify-center text-center">
 
-            <h1 class="md:text-3xl md:font-semibold text-lg font-medium tracking-wide text-gray-800">Meet Our <span
-                    class="text-[#1BC7C7]">Healthcare
-                    Professionals</span></h1>
-            <p class="text-gray-600 md:font-medium text-sm mt-4">Our team of experienced doctors and specialists are
-                committed to
-                providing exceptional care</p>
+            <h1 class="md:text-3xl md:font-semibold text-lg font-medium tracking-wide text-gray-800">Top Doctors to Book</h1>
+            <p class="text-gray-600 md:font-medium text-sm mt-4">Simply browse through our extensive list of trusted doctors.</p>
         </div>
         <div class="p-6  mt-10 ">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 md:gap-6 px-[7%] gap-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 md:gap-6 px-[7%] gap-5">
 
                 {% for doctor in doctors %}
                 <div
                     class="flex flex-col  bg-white  border  pb-4 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105">
                     <img src="{{doctor.image.url}}" alt="" class="w-full h-56 rounded-t-lg">
-                    <h1 class="text-xl font-semibold hover:text-[#1BC7C7] px-4 mt-2">{{doctor.name}}</h1>
-                    <p class="text-[#1BC7C7] px-4 mt-1">{{doctor.qualification}}</p>
-                    <p class="text-[#1BC7C7] px-4 mt-1">{{doctor.department}}</p>
+                    <h1 class="text-xl font-semibold px-4 mt-2">Dr. {{doctor.name}}</h1>
+                    <p class="text-gray-800 px-4 mt-1">{{doctor.department}}</p>
                     <a href="{% url 'appointmentdate' doctor.id %}" class="px-4 mt-2">
                         <p
-                            class="inline-flex  bg-[#1BC7C7] items-center justify-center w-full py-2 rounded-lg hover:bg-[#276969] text-white gap-2">
+                            class="inline-flex  bg-blue-500 items-center justify-center w-full py-2 rounded-lg hover:bg-blue-700 text-white gap-2">
                             <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                                 viewBox="0 0 24 24">
@@ -241,71 +182,33 @@
         </div>
     </div>
 </div>
-<!-- describe some about for this app -->
-<div class="w-full px-5 py-8 mt-4  ">
-    <div class="flex flex-col justify-center text-center text-3xl font-bold">
-
-        <h2 class=" text-center  tracking-wider  px-[5%]">Simplify your business, care for your patients and </h2>
-        <span class="text-[#1BC7C7] font-semibold">reclaim wasted time</span>
+<div class="flex mt-8 justify-center text-center">
+        <a href="{% url 'doctorlist' %}" class="text-md bg-gray-200 px-8 py-3 text-gray-700 border rounded-full">more doctors</a>
     </div>
-    <div class="flex flex-1 w-full mt-10 py-10">
-        <div class="w-5/12">
-            <div class="flex flex-1 justify-center items-center ">
-
-                <img src="{% static 'medical.png' %}" alt="logo" class="rounded-lg size-96">
+<!-- describe some about for this app -->
+<div class="w-full  mt-4 sm:block hidden ">
+    
+    <div class="flex flex-1 w-full mt-10 px-[5%]  bg-blue-500">
+       
+        <div class="w-7/12 px-[8%] items-center flex">
+            <div class="flex flex-col gap-3">
+                <h1 class="text-white text-4xl font-bold">Book Appointment</h1>
+                <h1 class="text-white text-4xl font-bold">With 100+ Trusted Doctors</h1>
+                <a href="" class="bg-white py-2 px-3 mt-2 self-start rounded-xl ">Book Appointment</a>
             </div>
         </div>
-        <div class="w-7/12  flex flex-1 self-start pr-[5%]">
-            <div class="flex flex-col gap-10 mt-5">
-            <div class="flex flex-1 gap-4">
-                <h1><svg class="w-7 h-9 text-[#1BC7C7] dark:text-white" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
-                            d="M4.5 17H4a1 1 0 0 1-1-1 3 3 0 0 1 3-3h1m0-3.05A2.5 2.5 0 1 1 9 5.5M19.5 17h.5a1 1 0 0 0 1-1 3 3 0 0 0-3-3h-1m0-3.05a2.5 2.5 0 1 0-2-4.45m.5 13.5h-7a1 1 0 0 1-1-1 3 3 0 0 1 3-3h3a3 3 0 0 1 3 3 1 1 0 0 1-1 1Zm-1-9.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" />
-                    </svg>
-                </h1>
-                <div class="flex flex-col">
-                    <h1 class="text-xl font-bold">Manage Client</h1>
-                    <p class=" lg:text-md text-sm lg:font-medium font-normal text-gray-600">Keep your client lists organized, manage bookings, cancellations, and changes, and ensure clients and staff stay informed with automated notifications via WhatsApp, SMS, and email.</p>
-                </div>
-            </div>
-            <div class="flex flex-1 gap-4">
-                <h1><svg class="w-7 h-7 text-[#1BC7C7] dark:text-white" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
-                            d="M4 4v15a1 1 0 0 0 1 1h15M8 16l2.5-5.5 3 3L17.273 7 20 9.667" />
-                    </svg>
-
-                </h1>
-                <div class="flex flex-col">
-                    <h1 class="text-xl font-bold">Manage Business</h1>
-                    <p class=" lg:text-md text-sm lg:font-medium font-normal text-gray-600">Stay up to date with your business performance via the admin app. Keep track of bookings, sales, provider workloads, and much more through your dashboard and insightful reports.</p>
-                </div>
-            </div>
-            <div class="flex flex-1 gap-4">
-                <h1><svg class="w-7 h-7 text-[#1BC7C7] dark:text-white" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
-                            d="M4.5 17H4a1 1 0 0 1-1-1 3 3 0 0 1 3-3h1m0-3.05A2.5 2.5 0 1 1 9 5.5M19.5 17h.5a1 1 0 0 0 1-1 3 3 0 0 0-3-3h-1m0-3.05a2.5 2.5 0 1 0-2-4.45m.5 13.5h-7a1 1 0 0 1-1-1 3 3 0 0 1 3-3h3a3 3 0 0 1 3 3 1 1 0 0 1-1 1Zm-1-9.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" />
-                    </svg>
-                </h1>
-                <div class="flex flex-col">
-                    <h1 class="text-xl font-bold">Manage Reviews</h1>
-                    <p class=" lg:text-md text-sm lg:font-medium font-normal text-gray-600">Don't forget to ask for reviews, and automate the email process. Use positive reviews in your marketing strategy and use social proof to engage more clients.</p>
-                </div>
-            </div>
-            </div>
+        <div class="w-5/12 ">
+            <img src="{% static 'appointment_removebg.png' %}" alt="" class="rounded-xl size-96  ">
         </div>
-
     </div>
 
 </div>
 
 <!-- describe  -->
 <div class="w-full bg-gray-50">
-    <div class="flex flex-col justify-center items-center  ">
+    <div class="flex flex-col justify-center items-center mt-8 py-14 gap-3">
 
-        <p class="lg:text-3xl lg:font-medium text-lg  px-4 py-5 ">The Best Medical Services Scheduling Software</p>
+        <p class="lg:text-3xl lg:font-medium text-lg  px-4  ">The Best Medical Services Scheduling Software</p>
         <span class="text-gray-600 sm:text-lg text-md">Trusted by the best in the Medical services industry.</span>
     </div>
     <!-- doctor department box -->
