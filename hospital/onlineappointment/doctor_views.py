@@ -54,10 +54,8 @@ def doctoreditappointment(request, id):
 
         if form.is_valid():
             with transaction.atomic():
-                AppointmentHistory.objects.create(
-                    appointment=appointment,doctor=old_doctor,patient=old_patient,
-                    old_date=old_date, old_time=old_time, old_status=old_status
-                )
+                AppointmentHistory.objects.create(appointment=appointment,doctor=old_doctor,patient=old_patient,
+                    old_date=old_date, old_time=old_time, old_status=old_status)
                 form.save()
                 appointment_reschedule(appointment.patient, appointment)
             return redirect('doctorappointmentlist')

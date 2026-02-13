@@ -138,10 +138,9 @@
                     </div>
 
                     {% if patient %}
-                    <!-- CONTENT -->
+                   
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
 
-                        <!-- LEFT COLUMN -->
                         <div class="space-y-4">
 
                             <div class="flex items-start gap-3">
@@ -250,20 +249,18 @@
 
         <div class="flex flex-1 justify-end mt-3 gap-4">
     
-    {% if appointment.payment_mode == "offline" %}
-        <a href="{% url 'offlinepayment' appointment.id %}"
+            {% if appointment.payment_mode == 'offline' %}
+                <a href="{% url 'offlinepayment' appointment.id %}"
            class="text-white bg-green-600 hover:bg-green-700 py-2 px-6 rounded">
            Offline Payment
-        </a>
-    {% endif %}
-
-    {% if appointment.payment_mode == "online" %}
-        <a href="{% url 'payment' appointment.id %}"
+            </a>
+            {% else %}
+                <a href="{% url 'payment' appointment.id %}"
            class="text-white bg-blue-600 hover:bg-blue-700 py-2 px-6 rounded">
            Online Payment
         </a>
-    {% endif %}
-
+            {% endif %}
+                
 </div>
 
     </div>

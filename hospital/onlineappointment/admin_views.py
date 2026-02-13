@@ -90,6 +90,7 @@ def editAppointment(request, id):
         if form.is_valid():
             AppointmentHistory.objects.create(appointment=appointment, doctor=old_doctor, patient = old_patient, old_date=old_date, old_time=old_time, old_status=old_status)
             form.save()
+            appointment_reschedule(appointment.patient, appointment)
             return redirect('totalappointmentlist')
     else:
         form = AppointmentForm(instance=appointment)
