@@ -2,18 +2,18 @@
 
 {% block content %}
 
-<div class="mt-24 px-[10%] bg-gray-50 w-full min-h-screen ">
+<div class="mt-24 lg:px-[10%] px-5 bg-gray-50 w-full min-h-screen ">
     <div class="bg-white border border-gray-200 rounded  p-6">
 
-        <h1 class="text-2xl font-semibold text-center text-[#276969]">
+        <h1 class="lg:text-2xl text-md  font-semibold text-center text-[#276969]">
             Appointment Payment Details
         </h1>
         <div class="flex flex-1 mt-3">
 
             {% for payment in paymentinfos %}
             <div class="flex flex-col gap-2">
-                <h2 class="text-xl font-semibold text-[#276969]">Appointment details</h2>
-                <div class="flex w-full gap-10 border-b px-3">
+                <h2 class="text-xl font-semibold text-[#276969] lg:block hidden">Appointment details</h2>
+                <div class="flex lg:flex-row flex-col w-full lg:gap-10 gap-3 border-b px-3">
                     <p class="text-md font-medium">Doctor : <span
                             class="text-lg font-normal text-gray-600">{{payment.doctor.name}}</span></p>
                     <p class="text-md font-medium">Appointment Date : <span
@@ -25,15 +25,16 @@
                     <p class="text-md font-medium">Appointment Fees : <span
                             class="text-lg font-normal text-gray-600">{{payment.doctor.consultation_fees}}</span>
                     </p>
+                    
 
                 </div>
-                <h2 class="text-xl font-semibold text-[#276969]">Payment details</h2>
-                <div class="flex flex-col px-3">
+                <h2 class="lg:text-xl text-lg sm:items-center sm:text-center font-semibold text-[#276969]">Payment details</h2>
+                <div class="flex flex-col px-3 ">
 
-                    <p class="text-xl font-normal">Payment Id : <span class="text-sm text-gray-600 ml-3">{{payment.razorpay_payment_id}}</span></p>
-                    <p class="text-xl font-normal">Payment Signature : <span class="text-sm text-gray-600 ml-3">{{payment.razorpay_signature}}</span></p>
-                    <p class="text-xl font-normal">Payment Order Id : <span class="text-sm text-gray-600 ml-3">{{payment.razorpay_order_id}}</span></p>
-                    <p class="text-xl font-normal">Payment Status : 
+                    <p class="text-xl font-normal flex lg:flex-row flex-col">Payment Id : <span class="text-sm text-gray-600 ">{{payment.razorpay_payment_id}}</span></p>
+                    <!-- <p class="text-xl font-normal flex lg:flex-row flex-col">Payment Signature : <span class="text-sm text-gray-600 ml-3">{{payment.razorpay_signature}}</span></p> -->
+                    <p class="text-xl font-normal flex lg:flex-row flex-col">Payment Order Id : <span class="text-sm text-gray-600 ">{{payment.razorpay_order_id}}</span></p>
+                    <p class="text-xl font-normal flex lg:flex-row flex-col">Payment Status : 
                         
                         {% if payment.status == success %}
                             

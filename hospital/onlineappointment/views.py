@@ -167,10 +167,8 @@ def paymentRefund(request, id):
             cancellation_charge = total_amount * 10 / 100
             refund_amount = total_amount - cancellation_charge
 
-           
             refund_amount_paise = int(refund_amount * 100)
 
-            print(refund_amount_paise)
             refund = client.payment.refund(payment.razorpay_payment_id, {"amount": refund_amount_paise } )
 
             if refund['status'] == 'processed':
@@ -183,7 +181,7 @@ def paymentRefund(request, id):
 
         except :
             pass
-    return redirect('paymentdetails')
+    return redirect('paymentdetails', id=id)
 
 
 def offlinePayment(request, id):
