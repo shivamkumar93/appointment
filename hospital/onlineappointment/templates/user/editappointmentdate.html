@@ -1,0 +1,23 @@
+{% extends 'user/header.html' %}
+{% load tailwind_filters %}
+{% block content %}
+<div class="w-full pb-10 bg-gray-50 mt-20 px-[10%] ">
+    <div class="flex flex-col py-5 ">
+        <div class="flex flex-1 bg-white border shadow-md rounded-lg mt-6 p-10">
+
+            <form action="" method="post" class="w-full">
+                {% csrf_token %}
+                <h2 class="text-xl font-bold justify-center text-center text-gray-800">Edit Appointment By Doctor</h2>
+                
+                {{form|crispy}}
+                <div class="flex flex-1 ">
+
+                    <button type="submit"
+                        class="w-full bg-blue-600 px-4 text-white py-2 rounded-lg mt-2">Update Appointment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+  
+{% endblock content %}

@@ -190,4 +190,20 @@ def offlinePayment(request, id):
     appointment.save()
     return redirect('patientAppointmentinfo')
 
+def appointmentEdit(request, id):
+    appointment = get_object_or_404(Appointment, id=id)
+    if request.method == "POST":
+        old_date = appointment.appointment_date
+        old_time= appointment.appointment_time
+        old_doctor = appointment.doctor
+        old_patient = appointment.patient
+        old_status = appointment.status
+        form = AppointmentForm(request.POST, instance=appointment)
+        if form.is_valid():
+            AppointmentHistory.objects.create(appointment=appointment, doctor=old_doctor, patient= old_patient, old_date=old_date, old_time=old_time, old_status=old_status)
 
+            form.save()
+            return redirect('patientAppointmentinfo')
+    else:
+        form = AppointmentForm(instance=appointment)
+    return render(request, 'user/editappointmentdate.html', {'form':form})
