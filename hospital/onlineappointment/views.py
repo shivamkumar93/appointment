@@ -11,11 +11,11 @@ from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from django.utils import timezone
-from datetime import date, datetime
+from datetime import datetime, timedelta
 from django.utils.dateparse import parse_date
 client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
 
-
+USE_TZ = True
 
 # Create your views here.
 def home(request):
@@ -161,6 +161,12 @@ def paymentRefund(request, id):
     appointment = get_object_or_404(Appointment, id=id)
     payment = Payment.objects.get(appointment=appointment)
 
+    appointment_datetime = datetime.combine(appointment.appointment_date, appointment.appointment_time)
+
+    if datetime.now() > appointment_datetime - timedelta(hours=24):
+        messages.error(request, "Appointment sirf 24 ghante pehle tak cancel ki ja sakti hai.")
+        return redirect('paymentdetails', id=id)
+ 
     if payment.status == 'success' and payment.razorpay_payment_id:
         try:
             total_amount = payment.doctor.consultation_fees  
