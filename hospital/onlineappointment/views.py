@@ -165,28 +165,39 @@ def paymentRefund(request, id):
 
     if datetime.now() > appointment_datetime - timedelta(hours=24):
         messages.error(request, "Appointment sirf 24 ghante pehle tak cancel ki ja sakti hai.")
-        return redirect('paymentdetails', id=id)
+        return redirect('patientAppointmentinfo')
+
+    messages.success(request, "Appointment cancelled successfully.")
+
  
     if payment.status == 'success' and payment.razorpay_payment_id:
         try:
-            total_amount = payment.doctor.consultation_fees  
-            cancellation_charge = total_amount * 10 / 100
+            total_amount = float(payment.doctor.consultation_fees)
+            cancellation_charge = total_amount * 0.10
             refund_amount = total_amount - cancellation_charge
-
             refund_amount_paise = int(refund_amount * 100)
 
-            refund = client.payment.refund(payment.razorpay_payment_id, {"amount": refund_amount_paise } )
+            refund = client.payment.refund(
+                payment.razorpay_payment_id,
+                {"amount": refund_amount_paise}
+            )
 
-            if refund['status'] == 'processed':
-                payment.status = 'refund'
-                payment.save()
-                appointment.status = 'cancelled'
-                appointment.save()
+            print("Refund Response:", refund)
 
-                messages.success(request, f'Appointment cancelled. ₹{cancellation_charge} charged, ₹{refund_amount} refunded.')
+            payment.status = 'refund'
+            payment.save()
 
-        except :
-            pass
+            appointment.status = 'cancelled'
+            appointment.save()
+
+            messages.success(request, "Appointment cancelled & refund initiated.")
+
+        except Exception as e:
+            print("Refund Error:", e)
+            messages.error(request, f"Refund failed: {e}")
+    
+    else:
+        messages.error(request, "Payment not eligible for refund.")
     return redirect('paymentdetails', id=id)
 
 

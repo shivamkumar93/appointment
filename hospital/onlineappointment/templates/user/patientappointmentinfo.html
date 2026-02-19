@@ -10,6 +10,21 @@
         </div>
         <h1 class=" text-center text-blue-500 items-center justify-center flex text-2xl font-bold">Appointment Details
         </h1>
+        {% if messages %}
+    <div class="mt-4">
+        {% for message in messages %}
+            <div class="px-4 py-3 rounded mb-3 text-white
+                {% if message.tags == 'error' %} bg-red-500
+                {% elif message.tags == 'success' %} bg-green-500
+                {% else %} bg-blue-500
+                {% endif %}">
+                
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
         <div class="flex flex-col bg-white border rounded-lg py-5 lg:px-10 gap-5  mt-5">
             
             {% for appointment in appointments %}
@@ -69,4 +84,10 @@
         </div>
     </div>
 </div>
+<script>
+    setTimeout(function () {
+        let alerts = document.querySelectorAll('.px-4.py-3');
+        alerts.forEach(alert => alert.style.display = 'none');
+    }, 3000);
+</script>
 {% endblock content %}
